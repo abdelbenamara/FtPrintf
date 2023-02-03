@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 00:33:35 by abenamar          #+#    #+#             */
-/*   Updated: 2023/02/01 21:08:40 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/02/02 00:58:39 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	ft_printf(const char *format, ...)
 {
-	int		res;
+	int		nb;
 	va_list	ap;
 
 	va_start(ap, format);
-	res = ft_vprintf(format, ap);
+	nb = ft_vprintf(format, ap);
 	va_end(ap);
-	return (res);
+	return (nb);
 }
