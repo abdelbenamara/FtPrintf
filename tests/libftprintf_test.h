@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 21:15:57 by abenamar          #+#    #+#             */
-/*   Updated: 2023/02/01 21:47:51 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/02/03 00:34:39 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define LIBFTPRINTF_TEST_H
 
 # include <stdio.h>
+# include <stdint.h>
+# include <string.h>
+# include <bsd/string.h>
 # include "libftprintf.h"
 
 # define RESET			"\033[0m"
@@ -22,9 +25,13 @@
 # define BOLDMAGENTA	"\033[1m\033[35m"      /* Bold Magenta */
 # define BOLDCYAN		"\033[1m\033[36m"      /* Bold Cyan */
 # define EOL			"\n"
+# define BUFFER_SIZE	4096
 
+void	ft_printf_without_any_conversion_load(void);
+
+char	*read_next_line(void);
 void	ft_assert(int index, int assertion);
 
-void	ft_printf_test(void);
+void	ft_printf_without_any_conversion_test(void);
 
 #endif

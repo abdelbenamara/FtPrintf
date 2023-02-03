@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 21:04:25 by abenamar          #+#    #+#             */
-/*   Updated: 2023/02/03 00:34:46 by abenamar         ###   ########.fr       */
+/*   Created: 2023/02/02 23:14:24 by abenamar          #+#    #+#             */
+/*   Updated: 2023/02/02 23:53:41 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_test.h"
 
-void	ft_assert(int index, int assertion)
+int main(void)
 {
-	if (assertion)
-		printf(BOLDGREEN "%d. OK\t", index);
-	else
-		printf(BOLDRED "%d. KO\t", index);
-}
+	char	*s1;
+	char	*s2;
 
-int	main(void)
-{
-	printf("\nProject: " BOLDMAGENTA "ft_printf\n");
-	printf(RESET "\n-\nPart 1: " BOLDMAGENTA "Mandatory\n");
-	printf(BOLDCYAN "\nConversion" RESET "\t\t" BOLDCYAN "Tests\n");
-	ft_printf_without_any_conversion_test();
-#ifdef BONUS
-#endif
-	printf("\n" RESET "\n");
+	s1 = read_next_line();
+	s2 = read_next_line();
+	ft_assert("%s", s);
+	free(s);
 	return (0);
 }
