@@ -6,7 +6,7 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 19:26:54 by abenamar          #+#    #+#              #
-#    Updated: 2023/02/03 00:35:05 by abenamar         ###   ########.fr        #
+#    Updated: 2023/02/03 01:01:47 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,9 +68,9 @@ test: $(NAME)
 	@echo "\033[0;36m########################################### test ###########################################\033[0m"
 	@./$(LOAD) | ./$(NAME)
 
-valgrind-test: $(NAME)
+valgrind-test: $(NAME) 
 	@echo "\033[0;36m#################################### test with valgrind ####################################\033[0m"
-	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
+	@./$(LOAD) | valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
 
 norm:
 	@echo "\033[0;36m######################################## norminette ########################################\033[0m"
