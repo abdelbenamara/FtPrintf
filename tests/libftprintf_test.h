@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 21:15:57 by abenamar          #+#    #+#             */
-/*   Updated: 2023/02/03 00:34:39 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/02/04 23:30:32 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,16 @@
 # define EOL			"\n"
 # define BUFFER_SIZE	4096
 
-void	ft_printf_without_any_conversion_load(void);
-
 char	*read_next_line(void);
 void	ft_assert(int index, int assertion);
+void	ft_test(int index1, int index2, char *line);
 
-void	ft_printf_without_any_conversion_test(void);
+void	ft_printf_no_conversion_test(void);
+void	ft_printf_c_conversion_test(void);
+void	ft_printf_s_conversion_test(void);
+void	ft_printf_d_conversion_test(void);
+void	ft_printf_i_conversion_test(void);
+void	ft_printf_u_conversion_test(void);
+void	ft_printf_percent_conversion_test(void);
 
 #endif
