@@ -6,11 +6,11 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 12:27:44 by abenamar          #+#    #+#             */
-/*   Updated: 2023/02/04 22:59:44 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/02/07 01:15:52 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "_conversion.h"
+#include "specification/libftprintf_specification.h"
 
 uint8_t	ft_is_specifier(const char c)
 {
