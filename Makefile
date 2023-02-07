@@ -6,7 +6,7 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 01:10:09 by abenamar          #+#    #+#              #
-#    Updated: 2023/02/04 23:04:02 by abenamar         ###   ########.fr        #
+#    Updated: 2023/02/07 01:23:26 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,22 +23,22 @@ SRCS += ft_dprintf.c
 SRCS += ft_vprintf.c 
 SRCS += ft_vdprintf.c 
 
-SRCS += conversion/ft_is_specifier.c
-SRCS += conversion/ft_specification_len.c
-SRCS += conversion/ft_uitoa.c
-SRCS += conversion/ft_putc_conversion_fd.c
-SRCS += conversion/ft_puts_conversion_fd.c
-SRCS += conversion/ft_putp_conversion_fd.c
-SRCS += conversion/ft_putd_conversion_fd.c
-SRCS += conversion/ft_puti_conversion_fd.c
-SRCS += conversion/ft_putu_conversion_fd.c
-SRCS += conversion/ft_putx_conversion_fd.c
-SRCS += conversion/ft_putupper_x_conversion_fd.c
-SRCS += conversion/ft_putpercent_conversion_fd.c
-SRCS += conversion/ft_putconversion_fd.c
+SRCS += utils/ft_uitoa_base.c
 
-ifneq (, $(findstring bonus, $(MAKECMDGOALS)))
-endif
+SRCS += specification/ft_is_specifier.c
+SRCS += specification/ft_specification_len.c
+
+SRCS += conversion/ft_init_conversions.c
+SRCS += conversion/ft_put_c_conversion_fd.c
+SRCS += conversion/ft_put_s_conversion_fd.c
+SRCS += conversion/ft_put_p_conversion_fd.c
+SRCS += conversion/ft_put_d_conversion_fd.c
+SRCS += conversion/ft_put_i_conversion_fd.c
+SRCS += conversion/ft_put_u_conversion_fd.c
+SRCS += conversion/ft_put_x_conversion_fd.c
+SRCS += conversion/ft_put_upper_x_conversion_fd.c
+SRCS += conversion/ft_put_percent_conversion_fd.c
+SRCS += conversion/ft_put_conversion_fd.c
 
 OBJS := $(SRCS:.c=.o)
 
