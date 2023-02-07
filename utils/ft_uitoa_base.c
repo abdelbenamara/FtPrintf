@@ -1,52 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_uitoa.c                                         :+:      :+:    :+:   */
+/*   ft_uitoa_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:55:29 by abenamar          #+#    #+#             */
-/*   Updated: 2023/02/04 23:05:35 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/02/07 01:15:40 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "_conversion.h"
+#include "utils/libftprintf_utils.h"
 
-static size_t	uint_to_strlen(unsigned int n)
+static size_t	uint_to_strlen(unsigned int n, size_t base_len)
 {
 	size_t			len;
-	unsigned int	i;
 
 	len = 0;
-	i = n;
 	if (!n)
 		++len;
-	while (i > 0)
+	while (n > 0)
 	{
 		++len;
-		i = i / 10;
+		n = n / base_len;
 	}
 	return (len);
 }
 
-char	*ft_uitoa(unsigned int n)
+char	*ft_uitoa_base(unsigned int n, const char *base)
 {
-	unsigned int	i;
+	const size_t	base_len = ft_strlen(base);
 	size_t			len;
 	char			*a;
 
-	i = n;
-	len = uint_to_strlen(n);
+	len = uint_to_strlen(n, base_len);
 	a = ft_calloc(len + 1, sizeof(char));
 	if (!a)
 		return (NULL);
 	if (!n)
-		a[0] = '0';
-	while (i > 0)
+		a[0] = base[0];
+	while (n > 0)
 	{
 		--len;
-		a[len] = i % 10 + '0';
-		i = i / 10;
+		a[len] = base[n % base_len];
+		n = n / base_len;
 	}
 	return (a);
 }
