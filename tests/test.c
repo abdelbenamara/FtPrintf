@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 21:04:25 by abenamar          #+#    #+#             */
-/*   Updated: 2023/02/04 23:30:46 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/02/06 20:10:42 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	main(void)
 	ft_printf_d_conversion_test();
 	ft_printf_i_conversion_test();
 	ft_printf_u_conversion_test();
+	ft_printf_x_conversion_test();
+	ft_printf_upper_x_conversion_test();
 	ft_printf_percent_conversion_test();
 #ifdef BONUS
 #endif

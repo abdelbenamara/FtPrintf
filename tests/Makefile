@@ -6,13 +6,11 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 19:26:54 by abenamar          #+#    #+#              #
-#    Updated: 2023/02/04 23:30:21 by abenamar         ###   ########.fr        #
+#    Updated: 2023/02/07 01:49:29 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := test.out
-
-LIBFTPRINTF := $(CURDIR)/../libftprintf.a
 
 INCLUDES := -I $(CURDIR)
 INCLUDES += -I $(CURDIR)/..
@@ -30,6 +28,8 @@ LSRCS += ft_printf_s_conversion_load.c
 LSRCS += ft_printf_d_conversion_load.c
 LSRCS += ft_printf_i_conversion_load.c
 LSRCS += ft_printf_u_conversion_load.c
+LSRCS += ft_printf_x_conversion_load.c
+LSRCS += ft_printf_upper_x_conversion_load.c
 LSRCS += ft_printf_percent_conversion_load.c
 
 SRCS := read_next_line.c
@@ -58,18 +58,24 @@ LOUTS := $(LOBJS:.o=.out)
 
 LOADS := $(LOUTS:%.out=./%.out;)
 
+VLOADS := $(LOUTS:%.out=valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./%.out;)
+
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
 
 %.out: %.o
 	@$(CC) $(CFLAGS) -o $@ $< $(INCLUDES) $(LDFLAGS) $(LDLIBS)
 
-$(NAME): $(LIBFTPRINTF) $(OBJS) $(LOUTS)
+$(NAME): .libftprintf .reload $(OBJS) $(LOBJS) $(LOUTS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(INCLUDES) -lbsd
 
-$(LIBFTPRINTF):
+.libftprintf:
 	@echo "\033[0;36m##################################### make libftprintf #####################################\033[0m"
 	@$(MAKE) -C $(CURDIR)/.. $(findstring bonus, $(MAKECMDGOALS))
+
+.reload:
+	@echo "\033[0;36m################################## (re)load tests entries ##################################\033[0m"
+	@$(RM) $(LOBJS)
 	@$(RM) $(LOUTS)
 
 test: $(NAME)
@@ -78,7 +84,7 @@ test: $(NAME)
 
 valgrind-test: $(NAME) 
 	@echo "\033[0;36m#################################### test with valgrind ####################################\033[0m"
-	@($(LOADS)) | valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
+	@($(VLOADS)) | valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
 
 norm:
 	@echo "\033[0;36m######################################## norminette ########################################\033[0m"

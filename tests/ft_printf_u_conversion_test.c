@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:46:55 by abenamar          #+#    #+#             */
-/*   Updated: 2023/02/04 22:47:38 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:09:53 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 void	ft_printf_u_conversion_test(void)
 {
-	char	*s1;
-	char	*s2;
-	char	*s3;
-	char	*s4;
-	char	*s5;
+	char	*line1;
+	char	*line2;
+	char	*line3;
+	char	*line4;
+	char	*line5;
 
 	printf(RESET "\n%%u \t\t\t");
-	s1 = read_next_line();
-	s2 = read_next_line();
-	s3 = read_next_line();
-	s4 = read_next_line();
-	s5 = read_next_line();
-	ft_test(1, 2, s1);
-	free(s1);
-	ft_test(3, 4, s2);
-	free(s2);
-	ft_test(5, 6, s3);
-	free(s3);
-	ft_test(7, 8, s4);
-	free(s4);
-	ft_test(9, 10, s5);
-	free(s5);
+	line1 = read_next_line();
+	line2 = read_next_line();
+	line3 = read_next_line();
+	line4 = read_next_line();
+	line5 = read_next_line();
+	ft_test(1, 2, line1);
+	free(line1);
+	ft_test(3, 4, line2);
+	free(line2);
+	ft_test(5, 6, line3);
+	free(line3);
+	ft_test(7, 8, line4);
+	free(line4);
+	ft_test(9, 10, line5);
+	free(line5);
 }
