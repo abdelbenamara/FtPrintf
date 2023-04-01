@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 12:27:44 by abenamar          #+#    #+#             */
-/*   Updated: 2023/02/07 01:15:52 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/01 15:42:54 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 uint8_t	ft_is_specifier(const char c)
 {
-	const char	*specifiers = SPECIFIERS;
+	int	i;
 
-	while (*specifiers)
+	i = 0;
+	while (i < 9)
 	{
-		if (*specifiers == c)
+		if (c == SPECIFIERS[i])
 			return (1);
-		++specifiers;
+		++i;
 	}
 	return (0);
 }
