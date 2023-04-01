@@ -6,7 +6,7 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 01:10:09 by abenamar          #+#    #+#              #
-#    Updated: 2023/02/13 00:50:16 by abenamar         ###   ########.fr        #
+#    Updated: 2023/04/01 16:10:45 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,6 @@ SRCS += utils/ft_uiptrtoa_base.c
 SRCS += specification/ft_is_specifier.c
 SRCS += specification/ft_specification_len.c
 
-SRCS += conversion/ft_init_conversions.c
 SRCS += conversion/ft_put_c_conversion_fd.c
 SRCS += conversion/ft_put_s_conversion_fd.c
 SRCS += conversion/ft_put_p_conversion_fd.c
@@ -38,6 +37,7 @@ SRCS += conversion/ft_put_u_conversion_fd.c
 SRCS += conversion/ft_put_x_conversion_fd.c
 SRCS += conversion/ft_put_upper_x_conversion_fd.c
 SRCS += conversion/ft_put_percent_conversion_fd.c
+SRCS += conversion/ft_put_no_conversion_fd.c
 SRCS += conversion/ft_put_conversion_fd.c
 
 OBJS := $(SRCS:.c=.o)
