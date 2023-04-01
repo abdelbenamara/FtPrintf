@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 00:49:15 by abenamar          #+#    #+#             */
-/*   Updated: 2023/02/07 01:14:28 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/01 13:26:22 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@
 # include "libftprintf.h"
 
 char	*ft_uitoa_base(unsigned int n, const char *base);
+char	*ft_uiptrtoa_base(uintptr_t n, const char *base);
 
 #endif
