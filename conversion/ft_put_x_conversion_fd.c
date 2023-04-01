@@ -6,21 +6,21 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:03:06 by abenamar          #+#    #+#             */
-/*   Updated: 2023/02/07 01:22:51 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/01 18:46:03 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils/libftprintf_utils.h"
 #include "conversion/libftprintf_conversion.h"
 
-int	ft_put_x_conversion_fd(const char *format, va_list ap, int fd)
+int	ft_put_x_conversion_fd(const char *format, va_list *ap, int fd)
 {
 	int				nb;
 	unsigned int	x;
 	char			*a;
 
 	(void)format;
-	x = va_arg(ap, unsigned int);
+	x = va_arg(*ap, unsigned int);
 	a = ft_uitoa_base(x, "0123456789abcdef");
 	nb = 0;
 	while (a[nb])
