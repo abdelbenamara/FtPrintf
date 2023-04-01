@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 13:53:53 by abenamar          #+#    #+#             */
-/*   Updated: 2023/02/07 01:16:00 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/01 16:28:17 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ size_t	ft_specification_len(const char *format)
 {
 	size_t	len;
 
-	if (*format != '%')
-		return (0);
 	++format;
 	len = 1;
 	while (*format && !ft_is_specifier(*format) && !ft_isalpha(*format))
