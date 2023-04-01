@@ -6,7 +6,7 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 01:10:09 by abenamar          #+#    #+#              #
-#    Updated: 2023/02/07 01:23:26 by abenamar         ###   ########.fr        #
+#    Updated: 2023/02/13 00:50:16 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,6 @@ LIBFT := $(CURDIR)/libft/libft.a
 
 INCLUDES := -I $(CURDIR)
 INCLUDES += -I $(CURDIR)/libft
-INCLUDES += -I $(CURDIR)/specifier
 
 SRCS := ft_printf.c 
 SRCS += ft_dprintf.c 
@@ -24,6 +23,7 @@ SRCS += ft_vprintf.c
 SRCS += ft_vdprintf.c 
 
 SRCS += utils/ft_uitoa_base.c
+SRCS += utils/ft_uiptrtoa_base.c
 
 SRCS += specification/ft_is_specifier.c
 SRCS += specification/ft_specification_len.c
