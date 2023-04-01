@@ -6,7 +6,7 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 19:26:54 by abenamar          #+#    #+#              #
-#    Updated: 2023/02/07 01:49:29 by abenamar         ###   ########.fr        #
+#    Updated: 2023/02/13 00:14:27 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ LDLIBS += -lft
 LSRCS := ft_printf_no_conversion_load.c
 LSRCS += ft_printf_c_conversion_load.c
 LSRCS += ft_printf_s_conversion_load.c
+LSRCS += ft_printf_p_conversion_load.c
 LSRCS += ft_printf_d_conversion_load.c
 LSRCS += ft_printf_i_conversion_load.c
 LSRCS += ft_printf_u_conversion_load.c

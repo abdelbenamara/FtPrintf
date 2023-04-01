@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 21:15:57 by abenamar          #+#    #+#             */
-/*   Updated: 2023/02/06 20:10:58 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/02/13 00:14:55 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_test(int index1, int index2, char *line);
 void	ft_printf_no_conversion_test(void);
 void	ft_printf_c_conversion_test(void);
 void	ft_printf_s_conversion_test(void);
+void	ft_printf_p_conversion_test(void);
 void	ft_printf_d_conversion_test(void);
 void	ft_printf_i_conversion_test(void);
 void	ft_printf_u_conversion_test(void);
