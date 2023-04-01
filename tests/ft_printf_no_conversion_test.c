@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 23:58:17 by abenamar          #+#    #+#             */
-/*   Updated: 2023/02/04 20:16:53 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/01 16:21:34 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_printf_no_conversion_test(void)
 	char	*line4;
 	char	*line5;
 
-	printf(RESET "\n-none- \t\t\t");
+	printf(RESET "\nn/a \t\t\t");
 	line1 = read_next_line();
 	line2 = read_next_line();
 	line3 = read_next_line();
