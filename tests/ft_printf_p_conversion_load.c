@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 00:04:32 by abenamar          #+#    #+#             */
-/*   Updated: 2023/02/13 00:35:25 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/01 21:56:50 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,43 @@ static void	ft_printf_p_conversion_load(void)
 	const void	*p4 = &nb;
 	void		*p5 = malloc(sizeof(size_t));
 
+	/* 1 */
 	nb = ft_printf("%p" EOL, p1);
 	printf("%d" EOL, nb);
+	/* 2 */
 	nb = printf("%p" EOL, p1);
 	printf("%d" EOL, nb);
+	/* 3 */
 	nb = ft_printf("%p" EOL, p2);
 	printf("%d" EOL, nb);
+	/* 4 */
 	nb = printf("%p" EOL, p2);
 	printf("%d" EOL, nb);
+	/* 5 */
 	nb = ft_printf("%p" EOL, p3);
 	printf("%d" EOL, nb);
+	/* 6 */
 	nb = printf("%p" EOL, p3);
 	printf("%d" EOL, nb);
+	/* 7 */
 	nb = ft_printf("%p" EOL, p4);
 	printf("%d" EOL, nb);
+	/* 8 */
 	nb = printf("%p" EOL, p4);
 	printf("%d" EOL, nb);
+	/* 9 */
 	nb = ft_printf("%p" EOL, p5);
 	printf("%d" EOL, nb);
+	/* 10 */
 	nb = printf("%p" EOL, p5);
 	printf("%d" EOL, nb);
 	free(p5);
+	/* 11 */
+	nb = ft_printf("%p %p %p" EOL, p1, p2, p3);
+	printf("%d" EOL, nb);
+	/* 12 */
+	nb = printf("%p %p %p" EOL, p1, p2, p3);
+	printf("%d" EOL, nb);
 }
 
 int	main(void)

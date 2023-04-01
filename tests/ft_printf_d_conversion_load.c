@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 20:33:14 by abenamar          #+#    #+#             */
-/*   Updated: 2023/02/04 20:56:10 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/01 18:52:12 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_printf_d_conversion_load(void)
 {
-	const int	d[7] = { 0, -0, -123, 456, -2147483648, 2147483647, 1000000000 };
+	const int	d[10] = { 0, -0, -123, 456, -2147483648, 2147483647, 1000000000, 1, 2, 3 };
 	int			n;
 	int			nb;
 
@@ -27,6 +27,10 @@ static void	ft_printf_d_conversion_load(void)
 		printf("%d" EOL, nb);
 		++n;
 	}
+	nb = ft_printf("%d %d %d" EOL, d[7], d[8], d[9]);
+	printf("%d" EOL, nb);
+	nb = printf("%d %d %d" EOL, d[7], d[8], d[9]);
+	printf("%d" EOL, nb);
 }
 
 int	main(void)

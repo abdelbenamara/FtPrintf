@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 00:12:47 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/01 13:19:08 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/01 22:41:54 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_printf_p_conversion_test(void)
 	char	*line3;
 	char	*line4;
 	char	*line5;
+	char	*line6;
 
 	printf(RESET "\n%%p \t\t\t");
 	line1 = read_next_line();
@@ -26,6 +27,7 @@ void	ft_printf_p_conversion_test(void)
 	line3 = read_next_line();
 	line4 = read_next_line();
 	line5 = read_next_line();
+	line6 = read_next_line();
 	ft_test(1, 2, line1);
 	free(line1);
 	ft_test(3, 4, line2);
@@ -36,4 +38,6 @@ void	ft_printf_p_conversion_test(void)
 	free(line4);
 	ft_test(9, 10, line5);
 	free(line5);
+	ft_test(11, 12, line6);
+	free(line6);
 }

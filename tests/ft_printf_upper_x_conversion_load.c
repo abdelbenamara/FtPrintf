@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 20:08:27 by abenamar          #+#    #+#             */
-/*   Updated: 2023/02/06 20:09:14 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/01 22:06:50 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_printf_upper_x_conversion_load(void)
 {
-	const unsigned int	upper_x[5] = { 0, 123456789, 1000000000, 2147483647, 4294967295 };
+	const unsigned int	upper_x[8] = { 0, 123456789, 1000000000, 2147483647, 4294967295, 2147483648, 2147483649, 2147483650 };
 	int					n;
 	int					nb;
 
@@ -27,6 +27,10 @@ static void	ft_printf_upper_x_conversion_load(void)
 		printf("%d" EOL, nb);
 		++n;
 	}
+	nb = ft_printf("%X %X %X" EOL, upper_x[5], upper_x[6], upper_x[7]);
+	printf("%d" EOL, nb);
+	nb = printf("%X %X %X" EOL, upper_x[5], upper_x[6], upper_x[7]);
+	printf("%d" EOL, nb);
 }
 
 int	main(void)

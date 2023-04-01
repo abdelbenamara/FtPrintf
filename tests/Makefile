@@ -6,7 +6,7 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 19:26:54 by abenamar          #+#    #+#              #
-#    Updated: 2023/02/13 00:14:27 by abenamar         ###   ########.fr        #
+#    Updated: 2023/04/01 22:54:53 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ CFLAGS := -g3
 CFLAGS += -Wall
 CFLAGS += -Wextra
 CFLAGS += -Werror
+CFLAGS += -Wno-format
 
 ifneq (, $(findstring bonus, $(MAKECMDGOALS)))
 CFLAGS += -DBONUS
