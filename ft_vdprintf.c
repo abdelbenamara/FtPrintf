@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 01:02:55 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/01 15:44:16 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/01 18:43:01 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_vdprintf(int fd, const char *format, va_list ap)
 		else
 		{
 			spec_len = ft_specification_len(format);
-			print_len += ft_put_conversion_fd(spec_len, format, ap, fd);
+			print_len += ft_put_conversion_fd(spec_len, format, &ap, fd);
 			format += spec_len;
 		}
 		++format;
