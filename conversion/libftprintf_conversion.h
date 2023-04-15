@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 12:22:14 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/01 18:43:28 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/15 13:54:52 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 # define LIBFTPRINTF_CONVERSION_H
 
 # include "libftprintf.h"
+# include "libftprintf_conversion_specifiers.h"
 
-int	ft_put_c_conversion_fd(const char *format, va_list *ap, int fd);
-int	ft_put_s_conversion_fd(const char *format, va_list *ap, int fd);
-int	ft_put_p_conversion_fd(const char *format, va_list *ap, int fd);
-int	ft_put_d_conversion_fd(const char *format, va_list *ap, int fd);
-int	ft_put_i_conversion_fd(const char *format, va_list *ap, int fd);
-int	ft_put_u_conversion_fd(const char *format, va_list *ap, int fd);
-int	ft_put_x_conversion_fd(const char *format, va_list *ap, int fd);
-int	ft_put_upper_x_conversion_fd(const char *format, va_list *ap, int fd);
-int	ft_put_percent_conversion_fd(const char *format, va_list *ap, int fd);
-int	ft_put_no_conversion_fd(size_t s_len, const char *format, int fd);
-int	ft_put_conversion_fd(size_t s_len, const char *format, va_list *ap, int fd);
+int	ft_vdc_conversion(int fd, t_flags *flags, va_list *ap);
+int	ft_vds_conversion(int fd, t_flags *flags, va_list *ap);
+int	ft_vdp_conversion(int fd, t_flags *flags, va_list *ap);
+int	ft_vdd_conversion(int fd, t_flags *flags, va_list *ap);
+int	ft_vdi_conversion(int fd, t_flags *flags, va_list *ap);
+int	ft_vdu_conversion(int fd, t_flags *flags, va_list *ap);
+int	ft_vdx_conversion(int fd, t_flags *flags, va_list *ap);
+int	ft_vdupperx_conversion(int fd, t_flags *flags, va_list *ap);
+int	ft_vdpercent_conversion(int fd, t_flags *flags, va_list *ap);
+int	ft_vdconvert(int fd, const char **format, va_list *ap);
 
 #endif
