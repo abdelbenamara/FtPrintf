@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_x_conversion_fd.c                           :+:      :+:    :+:   */
+/*   ft_vdx_conversion.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:03:06 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/01 18:46:03 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/15 13:04:17 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils/libftprintf_utils.h"
-#include "conversion/libftprintf_conversion.h"
+#include "libftprintf_utils.h"
+#include "libftprintf_conversion.h"
 
-int	ft_put_x_conversion_fd(const char *format, va_list *ap, int fd)
+int	ft_vdx_conversion(int fd, t_flags *flags, va_list *ap)
 {
 	int				nb;
 	unsigned int	x;
 	char			*a;
 
-	(void)format;
 	x = va_arg(*ap, unsigned int);
 	a = ft_uitoa_base(x, "0123456789abcdef");
 	nb = 0;
@@ -29,5 +28,6 @@ int	ft_put_x_conversion_fd(const char *format, va_list *ap, int fd)
 		++nb;
 	}
 	free(a);
+	free(flags);
 	return (nb);
 }
