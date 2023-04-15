@@ -2,3 +2,6 @@
 	path = libft
 	url = https://github.com/abdelbenamara/Libft.git
 	branch = main
+[submodule "printfTester"]
+	path = tests/printfTester
+	url = https://github.com/Tripouille/printfTester.git
