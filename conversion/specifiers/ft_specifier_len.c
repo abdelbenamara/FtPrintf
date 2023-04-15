@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_specification_len.c                             :+:      :+:    :+:   */
+/*   ft_specifier_len.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 13:53:53 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/01 16:28:17 by abenamar         ###   ########.fr       */
+/*   Created: 2023/04/08 11:03:35 by abenamar          #+#    #+#             */
+/*   Updated: 2023/04/15 12:11:35 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "specification/libftprintf_specification.h"
+#include "conversion/specifiers/libftprintf_conversion_specifiers.h"
 
-size_t	ft_specification_len(const char *format)
+size_t	ft_specifier_len(const char *format)
 {
-	size_t	len;
+	size_t	i;
 
-	++format;
-	len = 1;
-	while (*format && !ft_is_specifier(*format) && !ft_isalpha(*format))
-	{
-		++format;
-		++len;
-	}
-	if (!*format)
-		return (0);
-	return (len);
+	i = 1;
+	while (format[i] && !ft_is_specifier(format[i]) && !ft_isalpha(format[i]))
+		++i;
+	return (i);
 }
