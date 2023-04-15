@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_i_conversion_fd.c                           :+:      :+:    :+:   */
+/*   ft_vdi_conversion.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:02:19 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/01 18:44:22 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/15 13:03:46 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "conversion/libftprintf_conversion.h"
+#include "libftprintf_conversion.h"
 
-int	ft_put_i_conversion_fd(const char *format, va_list *ap, int fd)
+int	ft_vdi_conversion(int fd, t_flags *flags, va_list *ap)
 {
-	return (ft_put_d_conversion_fd(format, ap, fd));
+	return (ft_vdd_conversion(fd, flags, ap));
 }
