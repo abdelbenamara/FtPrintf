@@ -6,7 +6,7 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 19:26:54 by abenamar          #+#    #+#              #
-#    Updated: 2023/04/01 22:54:53 by abenamar         ###   ########.fr        #
+#    Updated: 2023/04/15 13:46:02 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,9 +92,21 @@ norm:
 	@echo "\033[0;36m######################################## norminette ########################################\033[0m"
 	@cd $(CURDIR)/.. && norminette $$(ls | grep "\.c\|\.h") && norminette $$(ls -d */ | grep -v 'libft/' | grep -v 'tests/')
 
+community-tests:
+	@if [ ! -d "printfTester" ] || [ -z "$$(ls -A printfTester)" ]; then \
+		git submodule update --init printfTester; \
+		echo "#ifndef FT_PRINTF_H\n# define FT_PRINTF_H\n\nint	ft_printf(const char *format, ...);\n\n#endif" > printfTester/ft_printf.h; \
+		sed -i 's/\(\.\.\)/\1\/\1/g' printfTester/Makefile; \
+		sed -i 's/\(-I utils\/\) -I\.\.\/\.\./\1 -I. -I..\/..\/libft/' printfTester/Makefile; \
+		sed -i 's/\(-lftprintf\)/\1 -L..\/..\/libft -lft/' printfTester/Makefile; \
+		sed -i 's/: update/:/g' printfTester/Makefile; \
+	fi
+	@echo "\033[0;36m################################# Tripouille : printfTester ################################\033[0m"
+	@$(MAKE) -C printfTester/
+
 bonus: $(NAME)
 
-all: norm valgrind-test
+all: norm valgrind-test community-tests
 
 clean:
 	$(RM) $(OBJS)

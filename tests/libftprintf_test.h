@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 21:15:57 by abenamar          #+#    #+#             */
-/*   Updated: 2023/02/13 00:14:55 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/15 13:40:36 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include <stdio.h>
 # include <stdint.h>
+# include <stdlib.h>
 # include <string.h>
 # include <bsd/string.h>
-# include "libftprintf.h"
 
 # define RESET			"\033[0m"
 # define BOLDRED		"\033[1m\033[31m"      /* Bold Red */
@@ -26,6 +26,8 @@
 # define BOLDCYAN		"\033[1m\033[36m"      /* Bold Cyan */
 # define EOL			"\n"
 # define BUFFER_SIZE	4096
+
+int		ft_printf(const char *format, ...);
 
 char	*read_next_line(void);
 void	ft_assert(int index, int assertion);
