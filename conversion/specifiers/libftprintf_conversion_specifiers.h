@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 12:08:10 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/15 12:10:09 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/16 14:25:43 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 
 # include "libftprintf.h"
 
-typedef struct s_flags
+typedef struct s_cslpf
 {
 	uint8_t	alternate_form;
 	size_t	specifier_len;
-}	t_flags;
+}	t_cslpf;
 
 uint8_t	ft_is_specifier(char c);
-size_t	ft_specifier_len(const char *format);
-t_flags	*ft_parse_specifier(const char *format);
+void	ft_parse_flags(const char c, t_cslpf *flags);
+t_cslpf	*ft_parse_specifier(const char *format);
 
 #endif
