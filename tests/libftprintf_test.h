@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 21:15:57 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/15 13:40:36 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/16 15:24:51 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdint.h>
 # include <stdlib.h>
 # include <string.h>
+# include <unistd.h>
 # include <bsd/string.h>
 
 # define RESET			"\033[0m"
@@ -41,7 +42,10 @@ void	ft_printf_d_conversion_test(void);
 void	ft_printf_i_conversion_test(void);
 void	ft_printf_u_conversion_test(void);
 void	ft_printf_x_conversion_test(void);
-void	ft_printf_upper_x_conversion_test(void);
+void	ft_printf_upperx_conversion_test(void);
 void	ft_printf_percent_conversion_test(void);
+
+void	ft_printf_x_alternate_form_test(void);
+void	ft_printf_upperx_alternate_form_test(void);
 
 #endif

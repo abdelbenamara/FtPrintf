@@ -6,7 +6,7 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 19:26:54 by abenamar          #+#    #+#              #
-#    Updated: 2023/04/15 13:46:02 by abenamar         ###   ########.fr        #
+#    Updated: 2023/04/16 15:25:38 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,11 +30,8 @@ LSRCS += ft_printf_d_conversion_load.c
 LSRCS += ft_printf_i_conversion_load.c
 LSRCS += ft_printf_u_conversion_load.c
 LSRCS += ft_printf_x_conversion_load.c
-LSRCS += ft_printf_upper_x_conversion_load.c
+LSRCS += ft_printf_upperx_conversion_load.c
 LSRCS += ft_printf_percent_conversion_load.c
-
-SRCS := read_next_line.c
-SRCS += $(LSRCS:_load.c=_test.c)
 
 CC := cc
 
@@ -46,8 +43,13 @@ CFLAGS += -Wno-format
 
 ifneq (, $(findstring bonus, $(MAKECMDGOALS)))
 CFLAGS += -DBONUS
+
+LSRCS += ft_printf_x_alternate_form_load.c
+LSRCS += ft_printf_upperx_alternate_form_load.c
 endif
 
+SRCS := read_next_line.c
+SRCS += $(LSRCS:_load.c=_test.c)
 SRCS += test.c
 
 RM := rm -f

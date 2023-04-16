@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 21:04:25 by abenamar          #+#    #+#             */
-/*   Updated: 2023/02/13 00:14:02 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/16 15:22:08 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,13 @@ int	main(void)
 	ft_printf_i_conversion_test();
 	ft_printf_u_conversion_test();
 	ft_printf_x_conversion_test();
-	ft_printf_upper_x_conversion_test();
+	ft_printf_upperx_conversion_test();
 	ft_printf_percent_conversion_test();
 #ifdef BONUS
+	printf(RESET "\n-\nPart 2: " BOLDMAGENTA "Bonus\n");
+	printf(BOLDCYAN "\nConversion" RESET "\t" BOLDCYAN "Tests\n");
+	ft_printf_x_alternate_form_test();
+	ft_printf_upperx_alternate_form_test();
 #endif
 	printf("\n" RESET "\n");
 	return (0);

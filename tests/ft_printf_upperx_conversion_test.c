@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_upper_x_conversion_test.c                :+:      :+:    :+:   */
+/*   ft_printf_upperx_conversion_test.c                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 20:09:52 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/01 22:43:50 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/16 14:57:23 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_test.h"
 
-void	ft_printf_upper_x_conversion_test(void)
+void	ft_printf_upperx_conversion_test(void)
 {
 	char	*line1;
 	char	*line2;

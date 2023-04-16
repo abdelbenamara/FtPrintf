@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_x_conversion_test.c                      :+:      :+:    :+:   */
+/*   ft_printf_x_alternate_form_test.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 18:55:16 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/16 14:57:33 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/16 15:23:44 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_test.h"
 
-void	ft_printf_x_conversion_test(void)
+void	ft_printf_x_alternate_form_test(void)
 {
 	char	*line1;
 	char	*line2;
@@ -21,7 +21,7 @@ void	ft_printf_x_conversion_test(void)
 	char	*line5;
 	char	*line6;
 
-	printf(RESET "\n%%x \t\t\t");
+	printf(RESET "\n%%#x \t\t\t");
 	line1 = read_next_line();
 	line2 = read_next_line();
 	line3 = read_next_line();
