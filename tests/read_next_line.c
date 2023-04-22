@@ -5,80 +5,121 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 22:51:22 by abenamar          #+#    #+#             */
-/*   Updated: 2023/02/02 23:59:11 by abenamar         ###   ########.fr       */
+/*   Created: 2023/01/10 01:35:25 by abenamar          #+#    #+#             */
+/*   Updated: 2023/04/22 17:11:37 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "libftprintf_test.h"
 
-static uint8_t	ft_init_buffer(char **buffer)
+static void	ft_strncpy(char *dst, const char *src, size_t size)
 {
-	if (!*buffer)
+	while (--size && *src)
 	{
-		*buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-		if (!*buffer)
+		*dst = *src;
+		++dst;
+		++src;
+	}
+	*dst = '\0';
+}
+
+static uint8_t	ft_buffer_isready(char **buffer)
+{
+	if (*buffer)
+		return (1);
+	*buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!(*buffer))
+		return (0);
+	**buffer = '\0';
+	return (1);
+}
+
+static uint8_t	ft_line_init(char **line, size_t len)
+{
+	*line = malloc((len + LINE_SIZE + 1) * sizeof(char));
+	if (!*line)
+		return (0);
+	**line = '\0';
+	return (1);
+}
+
+static uint8_t	ft_line_update(char **line, size_t len, char *buf, size_t idx)
+{
+	char	*tmp;
+	uint8_t	is_line_full;
+
+	is_line_full = (len + idx + 1 >= (len / LINE_SIZE + 1) * LINE_SIZE);
+	if (buf[idx] != '\n' && !is_line_full)
+		ft_strncpy(*line + len, buf, idx + 2);
+	else
+	{
+		if (buf[idx] == '\n')
+		{
+			tmp = malloc((len + idx + 2) * sizeof(char));
+			if (!tmp)
+				return (0);
+		}
+		else if (is_line_full
+			&& !ft_line_init(&tmp, ((len + idx) / LINE_SIZE + 1) * LINE_SIZE))
 			return (0);
-		**buffer = '\0';
+		ft_strncpy(tmp, *line, len + 1);
+		ft_strncpy(tmp + len, buf, idx + 2);
+		free(*line);
+		*line = tmp;
 	}
 	return (1);
 }
 
-static void	ft_reset_buffer(char **buffer)
+static uint8_t	ft_eol_in_buffer(char **line, char *buf, size_t *line_len)
 {
-	free(*buffer);
-	*buffer = NULL;
-}
-
-static uint8_t	ft_line_buffer_sync(char **line, char *buffer)
-{
-	size_t	i;
-	size_t	len;
+	size_t	idx;
 	char	*tmp;
 
-	if (!*buffer)
+	if (!**line && !*buf)
 		return (0);
-	i = 0;
-	while (buffer[i] && buffer[i] != '\n')
-		++i;
-	len = strlen(*line);
-	tmp = malloc((len + i + 2) * sizeof(char));
-	if (!tmp)
+	idx = 0;
+	while (buf[idx] && buf[idx] != '\n')
+		++idx;
+	if (!idx && !*buf)
+	{
+		tmp = malloc((*line_len + 1) * sizeof(char));
+		if (!tmp)
+			return (0);
+		ft_strncpy(tmp, *line, *line_len + 1);
+		return (free(*line), *line = tmp, 1);
+	}
+	else if (!ft_line_update(line, *line_len, buf, idx))
 		return (0);
-	strlcpy(tmp, *line, len + 1);
-	free(*line);
-	strlcpy(tmp + len, buffer, i + 2);
-	*line = tmp;
-	if (buffer[i] == '\n')
-		return (strlcpy(buffer, buffer + i + 1, BUFFER_SIZE), 1);
-	return (strlcpy(buffer, buffer + i, BUFFER_SIZE), 0);
+	*line_len += idx;
+	if (buf[idx] == '\n')
+		return (ft_strncpy(buf, buf + idx + 1, BUFFER_SIZE), 1);
+	return (ft_strncpy(buf, buf + idx, BUFFER_SIZE), 0);
 }
 
 char	*read_next_line(void)
 {
-	static char		*buffer = NULL;
-	char			*line;
-	ssize_t			read_size;
+	static char	*buffer = NULL;
+	char		*line;
+	size_t		line_len;
+	ssize_t		read_size;
 
-	line = malloc(1 * sizeof(char));
-	if (!line)
+	line_len = 0;
+	if (!ft_line_init(&line, line_len))
 		return (NULL);
-	if (!ft_init_buffer(&buffer))
+	if (!ft_buffer_isready(&buffer))
 		return (free(line), NULL);
-	*line = '\0';
-	while (!ft_line_buffer_sync(&line, buffer))
+	while (!ft_eol_in_buffer(&line, buffer, &line_len))
 	{
 		if (!*buffer)
 		{
 			read_size = read(STDIN_FILENO, buffer, BUFFER_SIZE);
-			if (*line && !read_size)
-				return (ft_reset_buffer(&buffer), line);
-			else if (read_size <= 0)
-				return (ft_reset_buffer(&buffer), free(line), NULL);
+			if ((!*line && !read_size) || read_size < 0)
+				return (free(buffer), buffer = NULL, free(line), NULL);
 			buffer[read_size] = '\0';
 		}
 	}
 	if (!*buffer)
-		return (ft_reset_buffer(&buffer), line);
+		return (free(buffer), buffer = NULL, line);
 	return (line);
 }

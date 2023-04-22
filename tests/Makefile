@@ -6,7 +6,7 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 19:26:54 by abenamar          #+#    #+#              #
-#    Updated: 2023/04/16 15:25:38 by abenamar         ###   ########.fr        #
+#    Updated: 2023/04/22 17:10:21 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,10 +46,17 @@ CFLAGS += -DBONUS
 
 LSRCS += ft_printf_x_alternate_form_load.c
 LSRCS += ft_printf_upperx_alternate_form_load.c
+LSRCS += ft_printf_d_blank_load.c
+LSRCS += ft_printf_i_blank_load.c
+LSRCS += ft_printf_d_sign_load.c
+LSRCS += ft_printf_i_sign_load.c
+LSRCS += ft_printf_d_sign_blank_load.c
+LSRCS += ft_printf_i_sign_blank_load.c
+LSRCS += ft_printf_d_blank_sign_load.c
+LSRCS += ft_printf_i_blank_sign_load.c
 endif
 
 SRCS := read_next_line.c
-SRCS += $(LSRCS:_load.c=_test.c)
 SRCS += test.c
 
 RM := rm -f
@@ -65,13 +72,14 @@ LOADS := $(LOUTS:%.out=./%.out;)
 VLOADS := $(LOUTS:%.out=valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./%.out;)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
+	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
 
 %.out: %.o
 	@$(CC) $(CFLAGS) -o $@ $< $(INCLUDES) $(LDFLAGS) $(LDLIBS)
+	@echo "$@ : OK!" | sed 's/_load\.out//'
 
 $(NAME): .libftprintf .reload $(OBJS) $(LOBJS) $(LOUTS)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(INCLUDES) -lbsd
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(INCLUDES) $(LDFLAGS) $(LDLIBS) -lbsd
 
 .libftprintf:
 	@echo "\033[0;36m##################################### make libftprintf #####################################\033[0m"
@@ -81,6 +89,7 @@ $(NAME): .libftprintf .reload $(OBJS) $(LOBJS) $(LOUTS)
 	@echo "\033[0;36m################################## (re)load tests entries ##################################\033[0m"
 	@$(RM) $(LOBJS)
 	@$(RM) $(LOUTS)
+	@$(RM) $$(echo "$(NAME)" | sed 's/\(\.o\)ut/\1/')
 
 test: $(NAME)
 	@echo "\033[0;36m########################################### test ###########################################\033[0m"
@@ -104,7 +113,7 @@ community-tests:
 		sed -i 's/: update/:/g' printfTester/Makefile; \
 	fi
 	@echo "\033[0;36m################################# Tripouille : printfTester ################################\033[0m"
-	@$(MAKE) -C printfTester/
+	@$(MAKE) -C printfTester/ a 
 
 bonus: $(NAME)
 
@@ -117,7 +126,6 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 	$(RM) $(LOUTS)
-	$(RM) $(LIBFTPRINTF)
 
 re: fclean all
 
