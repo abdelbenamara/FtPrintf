@@ -6,14 +6,14 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:03:24 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/16 15:20:30 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/22 13:20:08 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_utils.h"
 #include "libftprintf_conversion.h"
 
-static int	ft_process_flags(int fd, unsigned int x, t_cslpf *flags)
+static int	ft_process_flags(int fd, t_cslpf *flags, unsigned int x)
 {
 	int	nb;
 
@@ -35,7 +35,7 @@ int	ft_vdupperx_conversion(int fd, t_cslpf *flags, va_list *ap)
 
 	x = va_arg(*ap, unsigned int);
 	a = ft_uitoa_base(x, "0123456789ABCDEF");
-	nb = ft_process_flags(fd, x, flags);
+	nb = ft_process_flags(fd, flags, x);
 	i = 0;
 	while (a[i])
 	{

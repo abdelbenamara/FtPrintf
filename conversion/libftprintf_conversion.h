@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 12:22:14 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/16 14:13:35 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/22 16:21:42 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBFTPRINTF_CONVERSION_H
 
 # include "libftprintf.h"
-# include "libftprintf_conversion_specifiers.h"
+# include "libftprintf_conversion_specifications.h"
 
 int	ft_vdc_conversion(int fd, t_cslpf *flags, va_list *ap);
 int	ft_vds_conversion(int fd, t_cslpf *flags, va_list *ap);
