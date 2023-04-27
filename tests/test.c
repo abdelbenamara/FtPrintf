@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 21:04:25 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/27 06:39:14 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/27 23:07:46 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	ft_test(int	index1, int index2, char *line)
 	i = read_next_line();
 	s = read_next_line();
 	j = read_next_line();
-	ft_assert(index1, atoi(i) == atoi(j));
-	ft_assert(index2, !strcmp(line, s));
+	ft_assert(index1, !strcmp(line, s));
+	ft_assert(index2, atoi(i) == atoi(j));
 	free(i);
 	free(s);
 	free(j);
@@ -97,7 +97,31 @@ int	main(void)
 	ft_conversion_test("%Nu", 6);
 	ft_conversion_test("%Nx", 6);
 	ft_conversion_test("%NX", 6);
-	ft_conversion_test("%N%", 6);
+	printf("\n");
+	ft_conversion_test("%-Nc", 6);
+	ft_conversion_test("%-Ns", 7);
+	ft_conversion_test("%-Np", 6);
+	ft_conversion_test("%-Nd", 8);
+	ft_conversion_test("%-Ni", 8);
+	ft_conversion_test("%-Nu", 6);
+	ft_conversion_test("%-Nx", 6);
+	ft_conversion_test("%-NX", 6);
+	printf("\n");
+	ft_conversion_test("%0Nd", 8);
+	ft_conversion_test("%0Ni", 8);
+	ft_conversion_test("%0Nu", 6);
+	ft_conversion_test("%0Nx", 6);
+	ft_conversion_test("%0NX", 6);	
+	ft_conversion_test("%0-Nd", 8);
+	ft_conversion_test("%0-Ni", 8);
+	ft_conversion_test("%0-Nu", 6);
+	ft_conversion_test("%0-Nx", 6);
+	ft_conversion_test("%0-NX", 6);	
+	ft_conversion_test("%-0Nd", 8);
+	ft_conversion_test("%-0Ni", 8);
+	ft_conversion_test("%-0Nu", 6);
+	ft_conversion_test("%-0Nx", 6);
+	ft_conversion_test("%-0NX", 6);	
 #endif
 	printf("\n" RESET "\n");
 	return (0);

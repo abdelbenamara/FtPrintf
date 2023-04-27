@@ -6,7 +6,7 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 19:26:54 by abenamar          #+#    #+#              #
-#    Updated: 2023/04/27 06:48:50 by abenamar         ###   ########.fr        #
+#    Updated: 2023/04/27 23:09:11 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,29 @@ LSRCS += ft_printf_i_field_width_load.c
 LSRCS += ft_printf_u_field_width_load.c
 LSRCS += ft_printf_x_field_width_load.c
 LSRCS += ft_printf_upperx_field_width_load.c
-LSRCS += ft_printf_percent_field_width_load.c
+LSRCS += ft_printf_c_minus_load.c
+LSRCS += ft_printf_s_minus_load.c
+LSRCS += ft_printf_p_minus_load.c
+LSRCS += ft_printf_d_minus_load.c
+LSRCS += ft_printf_i_minus_load.c
+LSRCS += ft_printf_u_minus_load.c
+LSRCS += ft_printf_x_minus_load.c
+LSRCS += ft_printf_upperx_minus_load.c
+LSRCS += ft_printf_d_zero_load.c
+LSRCS += ft_printf_i_zero_load.c
+LSRCS += ft_printf_u_zero_load.c
+LSRCS += ft_printf_x_zero_load.c
+LSRCS += ft_printf_upperx_zero_load.c
+LSRCS += ft_printf_d_zero_minus_load.c
+LSRCS += ft_printf_i_zero_minus_load.c
+LSRCS += ft_printf_u_zero_minus_load.c
+LSRCS += ft_printf_x_zero_minus_load.c
+LSRCS += ft_printf_upperx_zero_minus_load.c
+LSRCS += ft_printf_d_minus_zero_load.c
+LSRCS += ft_printf_i_minus_zero_load.c
+LSRCS += ft_printf_u_minus_zero_load.c
+LSRCS += ft_printf_x_minus_zero_load.c
+LSRCS += ft_printf_upperx_minus_zero_load.c
 endif
 
 SRCS := read_next_line.c
