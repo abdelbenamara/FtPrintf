@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_percent_conversion_load.c                :+:      :+:    :+:   */
+/*   ft_printf_p_left_field_width_load.c                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 23:26:44 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/27 06:26:10 by abenamar         ###   ########.fr       */
+/*   Created: 2023/02/13 00:04:32 by abenamar          #+#    #+#             */
+/*   Updated: 2023/04/27 06:22:02 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,50 @@
 
 static void	load(void)
 {
-	int	nb;
+	const void	*p1 = NULL;
+	const void	*p2 = "test";
+	int			n;
+	int			nb;
+	const void	*p3 = &n;
+	const void	*p4 = &nb;
+	void		*p5 = malloc(sizeof(size_t));
 
 	/* 1 */
-	nb = ft_printf("%%" EOL);
+	nb = ft_printf("%4p" EOL, p1);
 	printf("%d" EOL, nb);
 	/* 2 */
-	nb = printf("%%" EOL);
+	nb = printf("%4p" EOL, p1);
 	printf("%d" EOL, nb);
 	/* 3 */
-	nb = ft_printf(" %%" EOL);
+	nb = ft_printf("%14p" EOL, p2);
 	printf("%d" EOL, nb);
 	/* 4 */
-	nb = printf(" %%" EOL);
+	nb = printf("%14p" EOL, p2);
 	printf("%d" EOL, nb);
 	/* 5 */
-	nb = ft_printf("%% " EOL);
+	nb = ft_printf("%24p" EOL, p3);
 	printf("%d" EOL, nb);
 	/* 6 */
-	nb = printf("%% " EOL);
+	nb = printf("%24p" EOL, p3);
 	printf("%d" EOL, nb);
 	/* 7 */
-	nb = ft_printf(" %% " EOL);
+	nb = ft_printf("%34p" EOL, p4);
 	printf("%d" EOL, nb);
 	/* 8 */
-	nb = printf(" %% " EOL);
+	nb = printf("%34p" EOL, p4);
 	printf("%d" EOL, nb);
 	/* 9 */
-	nb = ft_printf("test%%test" EOL);
+	nb = ft_printf("%44p" EOL, p5);
 	printf("%d" EOL, nb);
 	/* 10 */
-	nb = printf("test%%test" EOL);
+	nb = printf("%44p" EOL, p5);
 	printf("%d" EOL, nb);
+	free(p5);
 	/* 11 */
-	nb = ft_printf("%% %%%%%% %%" EOL);
+	nb = ft_printf("%1p %30p %345p" EOL, p1, p2, p3);
 	printf("%d" EOL, nb);
 	/* 12 */
-	nb = printf("%% %%%%%% %%" EOL);
+	nb = printf("%1p %30p %345p" EOL, p1, p2, p3);
 	printf("%d" EOL, nb);
 }
 

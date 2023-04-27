@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 21:04:25 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/22 17:00:50 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/27 06:39:14 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,16 @@ int	main(void)
 	ft_conversion_test("%+ i", 8);
 	ft_conversion_test("% +d", 8);
 	ft_conversion_test("% +i", 8);
+	printf("\n\n" RESET "-\n'N' represents a strictly positive decimal number\n-");
+	ft_conversion_test("%Nc", 6);
+	ft_conversion_test("%Ns", 7);
+	ft_conversion_test("%Np", 6);
+	ft_conversion_test("%Nd", 8);
+	ft_conversion_test("%Ni", 8);
+	ft_conversion_test("%Nu", 6);
+	ft_conversion_test("%Nx", 6);
+	ft_conversion_test("%NX", 6);
+	ft_conversion_test("%N%", 6);
 #endif
 	printf("\n" RESET "\n");
 	return (0);

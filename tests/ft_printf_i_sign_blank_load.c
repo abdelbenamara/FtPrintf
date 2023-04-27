@@ -6,13 +6,13 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 18:34:41 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/22 16:59:13 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/27 06:22:36 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_test.h"
 
-static void	ft_printf_i_sign_blank_load(void)
+static void	load(void)
 {
 	const int	i[10] = { 0, -0, -123, 456, -2147483648, 2147483647, 1000000000, 1, -2, 3 };
 	int			n;
@@ -35,6 +35,6 @@ static void	ft_printf_i_sign_blank_load(void)
 
 int	main(void)
 {
-	ft_printf_i_sign_blank_load();
+	load();
 	return (0);
 }

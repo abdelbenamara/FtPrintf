@@ -6,13 +6,13 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:05:08 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/01 23:10:06 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/27 06:26:23 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_test.h"
 
-static void	ft_printf_s_conversion_load(void)
+static void	load(void)
 {
 	const char	*s[9] = { NULL, "", "\rtest\b", "àéîüœ", "Hello World!", "0123456789", "toto", "titi", "tutu" };
 	int			n;
@@ -35,6 +35,6 @@ static void	ft_printf_s_conversion_load(void)
 
 int	main(void)
 {
-	ft_printf_s_conversion_load();
+	load();
 	return (0);
 }

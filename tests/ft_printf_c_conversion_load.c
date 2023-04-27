@@ -6,13 +6,13 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:10:42 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/01 18:34:48 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/27 06:22:10 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_test.h"
 
-static void	ft_printf_c_conversion_load(void)
+static void	load(void)
 {
 	const int	c[8] = { 'a', ' ', '0', '\v', 250, 'x', 'y', 'z' };
 	int			n;
@@ -35,6 +35,6 @@ static void	ft_printf_c_conversion_load(void)
 
 int	main(void)
 {
-	ft_printf_c_conversion_load();
+	load();
 	return (0);
 }

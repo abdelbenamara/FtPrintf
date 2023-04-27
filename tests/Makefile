@@ -6,7 +6,7 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 19:26:54 by abenamar          #+#    #+#              #
-#    Updated: 2023/04/22 17:10:21 by abenamar         ###   ########.fr        #
+#    Updated: 2023/04/27 06:48:50 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,15 @@ LSRCS += ft_printf_d_sign_blank_load.c
 LSRCS += ft_printf_i_sign_blank_load.c
 LSRCS += ft_printf_d_blank_sign_load.c
 LSRCS += ft_printf_i_blank_sign_load.c
+LSRCS += ft_printf_c_field_width_load.c
+LSRCS += ft_printf_s_field_width_load.c
+LSRCS += ft_printf_p_field_width_load.c
+LSRCS += ft_printf_d_field_width_load.c
+LSRCS += ft_printf_i_field_width_load.c
+LSRCS += ft_printf_u_field_width_load.c
+LSRCS += ft_printf_x_field_width_load.c
+LSRCS += ft_printf_upperx_field_width_load.c
+LSRCS += ft_printf_percent_field_width_load.c
 endif
 
 SRCS := read_next_line.c
