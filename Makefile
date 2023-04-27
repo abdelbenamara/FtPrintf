@@ -6,7 +6,7 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 01:10:09 by abenamar          #+#    #+#              #
-#    Updated: 2023/04/22 16:28:48 by abenamar         ###   ########.fr        #
+#    Updated: 2023/04/27 06:40:00 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,10 @@ SRCS += ft_vdprintf.c
 SRCS += utils/ft_uitoa_base.c
 SRCS += utils/ft_uiptrtoa_base.c
 
+SRCS += conversion/specifications/ft_adjust_left.c
+SRCS += conversion/specifications/ft_is_flag.c
 SRCS += conversion/specifications/ft_is_specifier.c
+SRCS += conversion/specifications/ft_parse_field_width.c
 SRCS += conversion/specifications/ft_parse_flags.c
 SRCS += conversion/specifications/ft_parse_specifications.c
 
