@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vdpercent_conversion.c                          :+:      :+:    :+:   */
+/*   ft_parse_field_width.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 16:03:41 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/27 06:45:19 by abenamar         ###   ########.fr       */
+/*   Created: 2023/04/08 11:03:35 by abenamar          #+#    #+#             */
+/*   Updated: 2023/04/22 22:47:08 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf_conversion.h"
+#include "libftprintf_conversion_specifications.h"
 
-int	ft_vdpercent_conversion(int fd, t_csfwp *specs, va_list *ap)
+void	ft_parse_field_width(const char *format, size_t *idx, t_csfwp *specs)
 {
-	(void) ap;
-	ft_putchar_fd('%', fd);
-	return (free(specs), 1);
+	specs->field_width = ft_atoi(format + *idx);
+	while (ft_isdigit(format[*idx]))
+		++(*idx);
 }

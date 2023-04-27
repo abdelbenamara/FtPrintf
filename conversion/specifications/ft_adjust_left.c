@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vdpercent_conversion.c                          :+:      :+:    :+:   */
+/*   ft_adjust_left.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 16:03:41 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/27 06:45:19 by abenamar         ###   ########.fr       */
+/*   Created: 2023/04/22 23:10:27 by abenamar          #+#    #+#             */
+/*   Updated: 2023/04/27 06:24:23 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf_conversion.h"
+#include "libftprintf_conversion_specifications.h"
 
-int	ft_vdpercent_conversion(int fd, t_csfwp *specs, va_list *ap)
+int	ft_adjust_left(int fd, t_csfwp *specs, size_t len)
 {
-	(void) ap;
-	ft_putchar_fd('%', fd);
-	return (free(specs), 1);
+	size_t	nb;
+
+	nb = 0;
+	if (specs->field_width > len)
+	{
+		while (nb < specs->field_width - len)
+		{
+			ft_putchar_fd(' ', fd);
+			++nb;
+		}
+	}
+	return (nb);
 }

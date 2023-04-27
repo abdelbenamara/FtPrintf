@@ -6,33 +6,26 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:58:19 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/16 14:14:20 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/27 06:52:51 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_conversion.h"
 
-int	ft_vds_conversion(int fd, t_cslpf *flags, va_list *ap)
+int	ft_vds_conversion(int fd, t_csfwp *specs, va_list *ap)
 {
-	int		nb;
 	char	*s;
+	size_t	len;
+	int		nb;
 
 	s = va_arg(*ap, char *);
 	if (!s)
-	{
-		ft_putstr_fd("(null)", fd);
-		nb = 6;
-	}
+		return (ft_putstr_fd("(null)", fd), free(specs), 6);
 	else
 	{
-		nb = 0;
-		while (*s)
-		{
-			ft_putchar_fd(*s, fd);
-			++s;
-			++nb;
-		}
+		len = ft_strlen(s);
+		nb = ft_adjust_left(fd, specs, len);
+		ft_putstr_fd(s, fd);
+		return (free(specs), nb + len);
 	}
-	free(flags);
-	return (nb);
 }
