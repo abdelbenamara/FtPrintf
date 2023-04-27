@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:00:40 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/27 06:53:02 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/27 07:30:16 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@ int	ft_vdp_conversion(int fd, t_csfwp *specs, va_list *ap)
 	else
 	{
 		a = ft_uiptrtoa_base(p, "0123456789abcdef");
-		len = ft_strlen(a);
-		nb = 2 + ft_adjust_left(fd, specs, 2 + len);
+		len = 2 + ft_strlen(a);
+		nb = ft_adjust_right(fd, specs, len);
 		ft_putstr_fd("0x", fd);
 		ft_putstr_fd(a, fd);
+		nb += ft_adjust_left(fd, specs, len);
 		return (free(a), free(specs), nb + len);
 	}
 }

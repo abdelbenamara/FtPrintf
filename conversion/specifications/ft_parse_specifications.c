@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 13:53:53 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/23 09:47:11 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/27 07:18:26 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ static t_csfwp	*ft_init_specs(void)
 	if (!specs)
 		return (NULL);
 	specs->alternate_form_flag = 0;
+	specs->left_adjustement_flag = 0;
+	specs->zero_flag = 0;
 	specs->blank_flag = 0;
 	specs->sign_flag = 0;
 	specs->field_width = 0;
-	specs->len = 0;
 	return (specs);
 }
 
@@ -45,6 +46,7 @@ t_csfwp	*ft_parse_specifications(const char *format)
 		else
 			++i;
 	}
+	specs->specifier = format[i];
 	specs->len = i;
 	return (specs);
 }

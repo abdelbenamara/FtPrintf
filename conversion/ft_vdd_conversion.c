@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:02:05 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/27 06:24:19 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:42:39 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ static int	ft_process_flags(int fd, t_csfwp *specs, int d)
 	int	nb;
 
 	nb = 0;
-	if (d >= 0 && specs->sign_flag)
+	if (d < 0 && specs->zero_flag)
+		ft_putchar_fd('-', fd);
+	else if (d >= 0 && specs->sign_flag)
 	{
 		ft_putchar_fd('+', fd);
 		++nb;
@@ -41,7 +43,11 @@ int	ft_vdd_conversion(int fd, t_csfwp *specs, va_list *ap)
 	a = ft_itoa(d);
 	len = ft_strlen(a);
 	nb = ft_process_flags(fd, specs, d);
+	nb += ft_adjust_right(fd, specs, len);
+	if (d < 0 && specs->zero_flag)
+		ft_putstr_fd(a + 1, fd);
+	else
+		ft_putstr_fd(a, fd);
 	nb += ft_adjust_left(fd, specs, len);
-	ft_putstr_fd(a, fd);
 	return (free(a), free(specs), nb + len);
 }

@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 12:08:10 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/27 06:24:19 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:11:50 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,17 @@
 typedef struct s_csfwp
 {
 	uint8_t	alternate_form_flag;
+	uint8_t	zero_flag;
+	uint8_t	left_adjustement_flag;
 	uint8_t	blank_flag;
 	uint8_t	sign_flag;
 	size_t	field_width;
+	char	specifier;
 	size_t	len;
 }	t_csfwp;
 
 int		ft_adjust_left(int fd, t_csfwp *specs, size_t len);
+int		ft_adjust_right(int fd, t_csfwp *specs, size_t len);
 uint8_t	ft_is_flag(char c);
 uint8_t	ft_is_specifier(char c);
 void	ft_parse_field_width(const char *format, size_t *idx, t_csfwp *specs);
