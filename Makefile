@@ -6,7 +6,7 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 01:10:09 by abenamar          #+#    #+#              #
-#    Updated: 2023/04/27 13:28:33 by abenamar         ###   ########.fr        #
+#    Updated: 2023/04/30 00:13:59 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ SRCS += ft_dprintf.c
 SRCS += ft_vprintf.c 
 SRCS += ft_vdprintf.c 
 
+SRCS += utils/ft_max_width.c
+SRCS += utils/ft_min_width.c
 SRCS += utils/ft_uitoa_base.c
 SRCS += utils/ft_uiptrtoa_base.c
 
@@ -34,6 +36,7 @@ SRCS += conversion/specifications/ft_is_flag.c
 SRCS += conversion/specifications/ft_is_specifier.c
 SRCS += conversion/specifications/ft_parse_field_width.c
 SRCS += conversion/specifications/ft_parse_flags.c
+SRCS += conversion/specifications/ft_parse_precision.c
 SRCS += conversion/specifications/ft_parse_specifications.c
 
 SRCS += conversion/ft_vdc_conversion.c
