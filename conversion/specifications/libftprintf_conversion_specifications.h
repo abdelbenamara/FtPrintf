@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 12:08:10 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/27 12:11:50 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/29 22:27:10 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define SPECIFIERS "cspdiuxX%"
 # define FLAGS "#0- +"
 
-typedef struct s_csfwp
+typedef struct s_cfwps
 {
 	uint8_t	alternate_form_flag;
 	uint8_t	zero_flag;
@@ -26,16 +26,21 @@ typedef struct s_csfwp
 	uint8_t	blank_flag;
 	uint8_t	sign_flag;
 	size_t	field_width;
+	ssize_t	precision;
 	char	specifier;
 	size_t	len;
-}	t_csfwp;
+}	t_cfwps;
 
-int		ft_adjust_left(int fd, t_csfwp *specs, size_t len);
-int		ft_adjust_right(int fd, t_csfwp *specs, size_t len);
+int		ft_adjust_left(int fd, t_cfwps *specs, size_t len);
+int		ft_adjust_right(int fd, t_cfwps *specs, size_t len);
+
 uint8_t	ft_is_flag(char c);
 uint8_t	ft_is_specifier(char c);
-void	ft_parse_field_width(const char *format, size_t *idx, t_csfwp *specs);
-void	ft_parse_flags(const char *format, size_t *idx, t_csfwp *specs);
-t_csfwp	*ft_parse_specifications(const char *format);
+
+void	ft_parse_field_width(const char *format, size_t *idx, t_cfwps *specs);
+void	ft_parse_flags(const char *format, size_t *idx, t_cfwps *specs);
+void	ft_parse_precision(const char *format, size_t *idx, t_cfwps *specs);
+
+t_cfwps	*ft_parse_specifications(const char *format);
 
 #endif

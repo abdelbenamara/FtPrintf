@@ -6,17 +6,18 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:58:19 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/27 07:30:43 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/30 00:13:49 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_conversion.h"
 
-int	ft_vds_conversion(int fd, t_csfwp *specs, va_list *ap)
+int	ft_vds_conversion(int fd, t_cfwps *specs, va_list *ap)
 {
 	char	*s;
 	size_t	len;
 	int		nb;
+	ssize_t	i;
 
 	s = va_arg(*ap, char *);
 	if (!s)
@@ -24,8 +25,16 @@ int	ft_vds_conversion(int fd, t_csfwp *specs, va_list *ap)
 	else
 	{
 		len = ft_strlen(s);
-		nb = ft_adjust_right(fd, specs, len);
-		ft_putstr_fd(s, fd);
+		nb = ft_adjust_right(fd, specs, ft_min_width(len, specs->precision));
+		if (specs->precision < 0 || len <= ((size_t) specs->precision))
+			ft_putstr_fd(s, fd);
+		else if (len > ((size_t) specs->precision))
+		{
+			len = specs->precision;
+			i = -1;
+			while (++i < specs->precision)
+				ft_putchar_fd(s[i], fd);
+		}
 		nb += ft_adjust_left(fd, specs, len);
 		return (free(specs), nb + len);
 	}

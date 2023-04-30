@@ -6,13 +6,13 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 13:35:57 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/27 12:12:54 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/29 01:39:19 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_conversion.h"
 
-int	ft_vdc_conversion(int fd, t_csfwp *specs, va_list *ap)
+int	ft_vdc_conversion(int fd, t_cfwps *specs, va_list *ap)
 {
 	char	c;
 	int		nb;

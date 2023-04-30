@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vdi_conversion.c                                :+:      :+:    :+:   */
+/*   ft_parse_precision.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 16:02:19 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/29 01:39:19 by abenamar         ###   ########.fr       */
+/*   Created: 2023/04/08 11:03:35 by abenamar          #+#    #+#             */
+/*   Updated: 2023/04/30 00:52:40 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf_conversion.h"
+#include "libftprintf_conversion_specifications.h"
 
-int	ft_vdi_conversion(int fd, t_cfwps *specs, va_list *ap)
+void	ft_parse_precision(const char *format, size_t *idx, t_cfwps *specs)
 {
-	return (ft_vdd_conversion(fd, specs, ap));
+	int	i;
+
+	++(*idx);
+	i = ft_atoi(format + *idx);
+	if (i < 0)
+		return ;
+	specs->precision = i;
+	specs->zero_flag = 0;
+	while (ft_isdigit(format[*idx]))
+		++(*idx);
 }

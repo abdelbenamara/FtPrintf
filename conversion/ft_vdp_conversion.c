@@ -6,14 +6,13 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:00:40 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/27 07:30:16 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/29 01:51:58 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf_utils.h"
 #include "libftprintf_conversion.h"
 
-int	ft_vdp_conversion(int fd, t_csfwp *specs, va_list *ap)
+int	ft_vdp_conversion(int fd, t_cfwps *specs, va_list *ap)
 {
 	uintptr_t	p;
 	char		*a;

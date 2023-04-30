@@ -6,13 +6,13 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 23:10:27 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/27 07:25:37 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/29 02:01:59 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_conversion_specifications.h"
 
-int	ft_adjust_left(int fd, t_csfwp *specs, size_t len)
+int	ft_adjust_left(int fd, t_cfwps *specs, size_t len)
 {
 	size_t	nb;
 

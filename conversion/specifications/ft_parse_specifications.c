@@ -6,17 +6,17 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 13:53:53 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/27 07:18:26 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/30 00:52:32 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_conversion_specifications.h"
 
-static t_csfwp	*ft_init_specs(void)
+static t_cfwps	*ft_init_specs(void)
 {
-	t_csfwp	*specs;
+	t_cfwps	*specs;
 
-	specs = malloc(sizeof(t_csfwp));
+	specs = malloc(sizeof(t_cfwps));
 	if (!specs)
 		return (NULL);
 	specs->alternate_form_flag = 0;
@@ -25,12 +25,13 @@ static t_csfwp	*ft_init_specs(void)
 	specs->blank_flag = 0;
 	specs->sign_flag = 0;
 	specs->field_width = 0;
+	specs->precision = -1;
 	return (specs);
 }
 
-t_csfwp	*ft_parse_specifications(const char *format)
+t_cfwps	*ft_parse_specifications(const char *format)
 {
-	t_csfwp	*specs;
+	t_cfwps	*specs;
 	size_t	i;
 
 	specs = ft_init_specs();
@@ -43,6 +44,11 @@ t_csfwp	*ft_parse_specifications(const char *format)
 			ft_parse_flags(format, &i, specs);
 		else if (ft_isdigit(format[i]))
 			ft_parse_field_width(format, &i, specs);
+		else if (format[i] == '.')
+		{
+			ft_parse_precision(format, &i, specs);
+			break ;
+		}
 		else
 			++i;
 	}

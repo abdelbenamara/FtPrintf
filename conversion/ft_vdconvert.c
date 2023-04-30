@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 13:56:33 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/27 13:33:55 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/29 22:23:11 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	ft_vdconvert(int fd, const char **format, va_list *ap)
 {
-	static int	(*ft_vd_conversion[])(int, t_csfwp *, va_list *) = {
+	static int	(*ft_vd_conversion[])(int, t_cfwps *, va_list *) = {
 		ft_vdc_conversion, ft_vds_conversion, ft_vdp_conversion,
 		ft_vdd_conversion, ft_vdi_conversion, ft_vdu_conversion,
 		ft_vdx_conversion, ft_vdupperx_conversion
 	};
-	t_csfwp		*specs;
+	t_cfwps		*specs;
 	uint8_t		i;
 
 	specs = ft_parse_specifications(*format);

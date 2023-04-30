@@ -6,13 +6,13 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:02:05 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/27 12:42:39 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/29 23:45:03 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_conversion.h"
 
-static int	ft_process_flags(int fd, t_csfwp *specs, int d)
+static int	ft_process_flags(int fd, t_cfwps *specs, int d)
 {
 	int	nb;
 
@@ -32,7 +32,30 @@ static int	ft_process_flags(int fd, t_csfwp *specs, int d)
 	return (nb);
 }
 
-int	ft_vdd_conversion(int fd, t_csfwp *specs, va_list *ap)
+static int	ft_process_precision(int fd, t_cfwps *specs, int d, size_t len)
+{
+	int	nb;
+	int	min;
+
+	if (d < 0 && !specs->zero_flag)
+		ft_putchar_fd('-', fd);
+	else if (specs->precision < 0 || (!d && !specs->precision))
+		return (0);
+	nb = 0;
+	min = 0;
+	if (d < 0 && ((size_t) specs->precision) > len - 1)
+		min = specs->precision - len + 1;
+	else if (d >= 0 && ((size_t) specs->precision) > len)
+		min = specs->precision - len;
+	while (nb < min)
+	{
+		ft_putchar_fd('0', fd);
+		++nb;
+	}
+	return (nb);
+}
+
+int	ft_vdd_conversion(int fd, t_cfwps *specs, va_list *ap)
 {
 	int		d;
 	char	*a;
@@ -43,11 +66,14 @@ int	ft_vdd_conversion(int fd, t_csfwp *specs, va_list *ap)
 	a = ft_itoa(d);
 	len = ft_strlen(a);
 	nb = ft_process_flags(fd, specs, d);
-	nb += ft_adjust_right(fd, specs, len);
-	if (d < 0 && specs->zero_flag)
+	if (!d && !specs->precision)
+		--len;
+	nb += ft_adjust_right(fd, specs, ft_max_width(len, specs->precision));
+	nb += ft_process_precision(fd, specs, d, len);
+	if (d < 0)
 		ft_putstr_fd(a + 1, fd);
-	else
+	else if (d > 0 || specs->precision)
 		ft_putstr_fd(a, fd);
-	nb += ft_adjust_left(fd, specs, len);
+	nb += ft_adjust_left(fd, specs, ft_max_width(len, specs->precision));
 	return (free(a), free(specs), nb + len);
 }
