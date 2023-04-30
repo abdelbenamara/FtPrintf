@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf_utils.h                                :+:      :+:    :+:   */
+/*   ft_min_width.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 00:49:15 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/30 00:13:03 by abenamar         ###   ########.fr       */
+/*   Created: 2023/04/29 23:17:48 by abenamar          #+#    #+#             */
+/*   Updated: 2023/04/30 00:12:53 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_UTILS_H
-# define LIBFTPRINTF_UTILS_H
+#include "libftprintf_utils.h"
 
-# include "libftprintf.h"
-
-size_t	ft_max_width(size_t len, ssize_t precision);
-size_t	ft_min_width(size_t len, ssize_t precision);
-char	*ft_uitoa_base(unsigned int n, const char *base);
-char	*ft_uiptrtoa_base(uintptr_t n, const char *base);
-
-#endif
+size_t	ft_min_width(size_t len, ssize_t precision)
+{
+	if (precision < 0 || len < ((size_t) precision))
+		return (len);
+	return (precision);
+}
