@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vdp_conversion.c                                :+:      :+:    :+:   */
+/*   ft_vdptr_conversion.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:00:40 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/29 01:51:58 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/30 10:26:15 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_conversion.h"
 
-int	ft_vdp_conversion(int fd, t_cfwps *specs, va_list *ap)
+int	ft_vdptr_conversion(int fd, t_cfwps *specs, va_list *ap)
 {
 	uintptr_t	p;
 	char		*a;
@@ -26,10 +26,10 @@ int	ft_vdp_conversion(int fd, t_cfwps *specs, va_list *ap)
 	{
 		a = ft_uiptrtoa_base(p, "0123456789abcdef");
 		len = 2 + ft_strlen(a);
-		nb = ft_adjust_right(fd, specs, len);
+		nb = ft_adjust_width(0, fd, specs, len);
 		ft_putstr_fd("0x", fd);
 		ft_putstr_fd(a, fd);
-		nb += ft_adjust_left(fd, specs, len);
+		nb += ft_adjust_width(1, fd, specs, len);
 		return (free(a), free(specs), nb + len);
 	}
 }
