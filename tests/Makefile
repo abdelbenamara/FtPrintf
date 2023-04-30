@@ -6,7 +6,7 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 19:26:54 by abenamar          #+#    #+#              #
-#    Updated: 2023/04/30 09:35:33 by abenamar         ###   ########.fr        #
+#    Updated: 2023/04/30 14:19:15 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -145,7 +145,7 @@ LOUTS := $(LOBJS:.o=.out)
 
 LOADS := $(LOUTS:%.out=./%.out;)
 
-VLOADS := $(LOUTS:%.out=valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./%.out;)
+VLOADS := $(LOUTS:%.out=valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --quiet ./%.out;)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
