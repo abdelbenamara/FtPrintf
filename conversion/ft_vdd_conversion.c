@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:02:05 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/29 23:45:03 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/30 09:21:23 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	ft_vdd_conversion(int fd, t_cfwps *specs, va_list *ap)
 	char	*a;
 	size_t	len;
 	int		nb;
+	size_t	width;
 
 	d = va_arg(*ap, int);
 	a = ft_itoa(d);
@@ -68,12 +69,13 @@ int	ft_vdd_conversion(int fd, t_cfwps *specs, va_list *ap)
 	nb = ft_process_flags(fd, specs, d);
 	if (!d && !specs->precision)
 		--len;
-	nb += ft_adjust_right(fd, specs, ft_max_width(len, specs->precision));
+	width = nb + ft_max_width(len, specs->precision);
+	nb += ft_adjust_right(fd, specs, width);
 	nb += ft_process_precision(fd, specs, d, len);
 	if (d < 0)
 		ft_putstr_fd(a + 1, fd);
 	else if (d > 0 || specs->precision)
 		ft_putstr_fd(a, fd);
-	nb += ft_adjust_left(fd, specs, ft_max_width(len, specs->precision));
+	nb += ft_adjust_left(fd, specs, width);
 	return (free(a), free(specs), nb + len);
 }

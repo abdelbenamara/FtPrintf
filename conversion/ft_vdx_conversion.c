@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:03:06 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/30 00:26:53 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/30 09:14:06 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	ft_vdx_conversion(int fd, t_cfwps *specs, va_list *ap)
 	char			*a;
 	size_t			len;
 	int				nb;
+	size_t			width;
 
 	x = va_arg(*ap, unsigned int);
 	a = ft_uitoa_base(x, "0123456789abcdef");
@@ -58,10 +59,11 @@ int	ft_vdx_conversion(int fd, t_cfwps *specs, va_list *ap)
 	nb = ft_process_flags(fd, specs, x);
 	if (!x && !specs->precision)
 		--len;
-	nb += ft_adjust_right(fd, specs, ft_max_width(len, specs->precision));
+	width = nb + ft_max_width(len, specs->precision);
+	nb += ft_adjust_right(fd, specs, width);
 	nb += ft_process_precision(fd, specs, x, len);
 	if (x > 0 || specs->precision)
 		ft_putstr_fd(a, fd);
-	nb += ft_adjust_left(fd, specs, ft_max_width(len, specs->precision));
+	nb += ft_adjust_left(fd, specs, width);
 	return (free(a), free(specs), nb + len);
 }
