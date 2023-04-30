@@ -6,7 +6,7 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 19:26:54 by abenamar          #+#    #+#              #
-#    Updated: 2023/04/30 01:06:13 by abenamar         ###   ########.fr        #
+#    Updated: 2023/04/30 09:35:33 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -191,7 +191,7 @@ community-tests:
 	@echo "\033[0;36m################################# Tripouille : printfTester ################################\033[0m"
 	@$(MAKE) -C printfTester/ $(TRIPOUILLE_RULE)
 
-bonus: $(NAME)
+bonus:
 
 all: norm valgrind-test community-tests
 
