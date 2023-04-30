@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:05:08 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/27 13:21:22 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/30 00:07:17 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	load(void)
 {
-	const char	*s[9] = { NULL, "", "\rtest\b", "àéîüœ", "Hello World!", "0123456789", "toto", "titi", "tutu" };
+	const char	*s[9] = { NULL, "", "\rtest\b", "àéîüœ", "Hello World!", "0123456789", "", "toto", "123" };
 	int			n;
 	int			nb;
 

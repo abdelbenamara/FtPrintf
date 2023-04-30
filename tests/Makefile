@@ -6,7 +6,7 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 19:26:54 by abenamar          #+#    #+#              #
-#    Updated: 2023/04/27 23:09:11 by abenamar         ###   ########.fr        #
+#    Updated: 2023/04/30 01:06:13 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,8 @@ CFLAGS += -Wextra
 CFLAGS += -Werror
 CFLAGS += -Wno-format
 
+TRIPOUILLE_RULE := m
+
 ifneq (, $(findstring bonus, $(MAKECMDGOALS)))
 CFLAGS += -DBONUS
 
@@ -70,6 +72,12 @@ LSRCS += ft_printf_i_minus_load.c
 LSRCS += ft_printf_u_minus_load.c
 LSRCS += ft_printf_x_minus_load.c
 LSRCS += ft_printf_upperx_minus_load.c
+LSRCS += ft_printf_x_minus_alternate_form_load.c
+LSRCS += ft_printf_upperx_minus_alternate_form_load.c
+LSRCS += ft_printf_d_minus_blank_load.c
+LSRCS += ft_printf_i_minus_blank_load.c
+LSRCS += ft_printf_d_minus_sign_load.c
+LSRCS += ft_printf_i_minus_sign_load.c
 LSRCS += ft_printf_d_zero_load.c
 LSRCS += ft_printf_i_zero_load.c
 LSRCS += ft_printf_u_zero_load.c
@@ -85,6 +93,43 @@ LSRCS += ft_printf_i_minus_zero_load.c
 LSRCS += ft_printf_u_minus_zero_load.c
 LSRCS += ft_printf_x_minus_zero_load.c
 LSRCS += ft_printf_upperx_minus_zero_load.c
+LSRCS += ft_printf_x_zero_alternate_form_load.c
+LSRCS += ft_printf_upperx_zero_alternate_form_load.c
+LSRCS += ft_printf_d_zero_blank_load.c
+LSRCS += ft_printf_i_zero_blank_load.c
+LSRCS += ft_printf_d_zero_sign_load.c
+LSRCS += ft_printf_i_zero_sign_load.c
+LSRCS += ft_printf_s_precision_load.c
+LSRCS += ft_printf_d_precision_load.c
+LSRCS += ft_printf_i_precision_load.c
+LSRCS += ft_printf_u_precision_load.c
+LSRCS += ft_printf_x_precision_load.c
+LSRCS += ft_printf_upperx_precision_load.c
+LSRCS += ft_printf_x_alternate_form_precision_load.c
+LSRCS += ft_printf_upperx_alternate_form_precision_load.c
+LSRCS += ft_printf_d_blank_precision_load.c
+LSRCS += ft_printf_i_blank_precision_load.c
+LSRCS += ft_printf_d_sign_precision_load.c
+LSRCS += ft_printf_i_sign_precision_load.c
+LSRCS += ft_printf_s_field_width_precision_load.c
+LSRCS += ft_printf_d_field_width_precision_load.c
+LSRCS += ft_printf_i_field_width_precision_load.c
+LSRCS += ft_printf_u_field_width_precision_load.c
+LSRCS += ft_printf_x_field_width_precision_load.c
+LSRCS += ft_printf_upperx_field_width_precision_load.c
+LSRCS += ft_printf_s_minus_precision_load.c
+LSRCS += ft_printf_d_minus_precision_load.c
+LSRCS += ft_printf_i_minus_precision_load.c
+LSRCS += ft_printf_u_minus_precision_load.c
+LSRCS += ft_printf_x_minus_precision_load.c
+LSRCS += ft_printf_upperx_minus_precision_load.c
+LSRCS += ft_printf_d_zero_precision_load.c
+LSRCS += ft_printf_i_zero_precision_load.c
+LSRCS += ft_printf_u_zero_precision_load.c
+LSRCS += ft_printf_x_zero_precision_load.c
+LSRCS += ft_printf_upperx_zero_precision_load.c
+
+TRIPOUILLE_RULE := a
 endif
 
 SRCS := read_next_line.c
@@ -144,7 +189,7 @@ community-tests:
 		sed -i 's/: update/:/g' printfTester/Makefile; \
 	fi
 	@echo "\033[0;36m################################# Tripouille : printfTester ################################\033[0m"
-	@$(MAKE) -C printfTester/ a 
+	@$(MAKE) -C printfTester/ $(TRIPOUILLE_RULE)
 
 bonus: $(NAME)
 

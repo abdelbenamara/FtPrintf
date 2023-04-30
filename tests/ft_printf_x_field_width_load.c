@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_x_adjust_left_load.c                     :+:      :+:    :+:   */
+/*   ft_printf_x_field_width_load.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 18:30:00 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/27 06:37:24 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/04/30 00:20:35 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	load(void)
 {
-	const unsigned int	x[8] = { 0, 123456789, 1000000000, 2147483647, 4294967295, 2147483648, 2147483649, 2147483650 };
+	const unsigned int	x[8] = { 0, 123456789, 1000000000, 2147483647, 4294967295, 0, 1000000000, 4294967295 };
 	int					n;
 	int					nb;
 
@@ -27,9 +27,9 @@ static void	load(void)
 		printf("%d" EOL, nb);
 		++n;
 	}
-	nb = ft_printf("%1x %80x %890x" EOL, x[5], x[6], x[7]);
+	nb = ft_printf("%1x %70x %890x" EOL, x[5], x[6], x[7]);
 	printf("%d" EOL, nb);
-	nb = printf("%1x %80x %890x" EOL, x[5], x[6], x[7]);
+	nb = printf("%1x %70x %890x" EOL, x[5], x[6], x[7]);
 	printf("%d" EOL, nb);
 }
 
