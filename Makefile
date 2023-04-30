@@ -6,7 +6,7 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 01:10:09 by abenamar          #+#    #+#              #
-#    Updated: 2023/04/30 00:13:59 by abenamar         ###   ########.fr        #
+#    Updated: 2023/04/30 11:21:34 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,24 +30,16 @@ SRCS += utils/ft_min_width.c
 SRCS += utils/ft_uitoa_base.c
 SRCS += utils/ft_uiptrtoa_base.c
 
-SRCS += conversion/specifications/ft_adjust_left.c
-SRCS += conversion/specifications/ft_adjust_right.c
+SRCS += conversion/specifications/ft_adjust_width.c
 SRCS += conversion/specifications/ft_is_flag.c
 SRCS += conversion/specifications/ft_is_specifier.c
-SRCS += conversion/specifications/ft_parse_field_width.c
-SRCS += conversion/specifications/ft_parse_flags.c
-SRCS += conversion/specifications/ft_parse_precision.c
 SRCS += conversion/specifications/ft_parse_specifications.c
 
-SRCS += conversion/ft_vdc_conversion.c
 SRCS += conversion/ft_vdconvert.c
-SRCS += conversion/ft_vdd_conversion.c
-SRCS += conversion/ft_vdi_conversion.c
-SRCS += conversion/ft_vdp_conversion.c
-SRCS += conversion/ft_vds_conversion.c
-SRCS += conversion/ft_vdu_conversion.c
-SRCS += conversion/ft_vdupperx_conversion.c
-SRCS += conversion/ft_vdx_conversion.c
+SRCS += conversion/ft_vdint_conversion.c
+SRCS += conversion/ft_vdptr_conversion.c
+SRCS += conversion/ft_vdstr_conversion.c
+SRCS += conversion/ft_vduint_conversion.c
 
 OBJS := $(SRCS:.c=.o)
 
