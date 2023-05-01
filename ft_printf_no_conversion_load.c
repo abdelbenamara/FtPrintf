@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 19:43:15 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/27 06:41:55 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/01 17:16:21 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ static void	load(void)
 	nb = printf("123" EOL);
 	printf("%d" EOL, nb);
 	/* 11 */
-	nb = ft_printf("%1b %23y %100r" EOL);
+	nb = ft_printf("%1r %23w %100y" EOL);
 	printf("%d" EOL, nb);
 	/* 12 */
-	nb = printf("%1b %23y %100r" EOL);
+	nb = printf("%1r %23w %100y" EOL);
 	printf("%d" EOL, nb);
 }
 
