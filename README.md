@@ -1,11 +1,42 @@
-# FtPrintf
+# FtPrintf tester
 
-## TODO
+## Installation
 
-1. '#'			=> OK
-2. ' '			=> OK
-3. '+'			=> OK
-4. field width	=> OK 
-5. '-'			=> OK
-6. '0'			=> OK
-7. '.'			=> OK 
+- In your FtPrintf project folder :
+```
+git clone https://github.com/abdelbenamara/FtPrintf.git tests/
+```
+
+## Usage
+```
+make all
+```
+```
+make bonus all
+```
+
+## Options
+
+- Vanilla :
+```
+make norm test
+```
+```
+make norm bonus test
+```
+
+- Valgrind :
+```
+make norm valgrind-test
+```
+```
+make norm bonus valgrind-test
+```
+
+- Community :
+```
+make community-tests
+```
+```
+make bonus community-tests
+```
