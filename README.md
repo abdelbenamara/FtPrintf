@@ -8,6 +8,7 @@ git clone https://github.com/abdelbenamara/FtPrintf.git tests/
 ```
 
 ## Usage
+
 ```
 make all
 ```
