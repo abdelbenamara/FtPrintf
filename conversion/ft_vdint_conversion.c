@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:02:05 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/30 14:11:34 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/01 17:05:53 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	ft_precise(int fd, t_cfwps *specs, int d, size_t len)
 	return (nb);
 }
 
-int	ft_vdint_conversion(int fd, t_cfwps *specs, va_list *ap)
+int	ft_vdint_conversion(int fd, t_cfwps *specs, va_list ap)
 {
 	int		d;
 	char	*a;
@@ -64,7 +64,7 @@ int	ft_vdint_conversion(int fd, t_cfwps *specs, va_list *ap)
 	int		nb;
 	size_t	width;
 
-	d = va_arg(*ap, int);
+	d = va_arg(ap, int);
 	if (specs->specifier == 'c')
 		return (nb = ft_adjust_uchar(fd, specs, d), free(specs), nb + 1);
 	a = ft_itoa(d);

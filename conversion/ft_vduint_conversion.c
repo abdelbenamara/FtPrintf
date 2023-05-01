@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:02:49 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/30 14:00:50 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/01 17:06:23 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	ft_precise(int fd, t_cfwps *specs, unsigned int u, size_t len)
 	return (nb);
 }
 
-int	ft_vduint_conversion(int fd, t_cfwps *specs, va_list *ap)
+int	ft_vduint_conversion(int fd, t_cfwps *specs, va_list ap)
 {
 	unsigned int	u;
 	char			*a;
@@ -48,7 +48,7 @@ int	ft_vduint_conversion(int fd, t_cfwps *specs, va_list *ap)
 	int				nb;
 	size_t			width;
 
-	u = va_arg(*ap, unsigned int);
+	u = va_arg(ap, unsigned int);
 	if (specs->specifier == 'x')
 		a = ft_uitoa_base(u, "0123456789abcdef");
 	else if (specs->specifier == 'X')

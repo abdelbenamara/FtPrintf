@@ -6,20 +6,20 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:00:40 by abenamar          #+#    #+#             */
-/*   Updated: 2023/05/01 13:56:00 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/01 17:06:01 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_conversion.h"
 
-int	ft_vdptr_conversion(int fd, t_cfwps *specs, va_list *ap)
+int	ft_vdptr_conversion(int fd, t_cfwps *specs, va_list ap)
 {
 	uintptr_t	p;
 	char		*a;
 	size_t		len;
 	int			nb;
 
-	p = (uintptr_t) va_arg(*ap, void *);
+	p = (uintptr_t) va_arg(ap, void *);
 	if (!p)
 		return (ft_putstr_fd("(nil)", fd), free(specs), 5);
 	else
