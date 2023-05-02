@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 21:04:25 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/30 09:29:57 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/02 02:49:00 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,15 @@ int	main(void)
 	ft_conversion_test("%Nu", 6);
 	ft_conversion_test("%Nx", 6);
 	ft_conversion_test("%NX", 6);
+	printf("\n");
+	ft_conversion_test("%#Nx", 6);
+	ft_conversion_test("%#NX", 6);
+	printf("\n");
+	ft_conversion_test("% Nd", 8);
+	ft_conversion_test("% Ni", 8);
+	printf("\n");
+	ft_conversion_test("%+Nd", 8);
+	ft_conversion_test("%+Ni", 8);
 	printf("\n" RESET "\n>>> '-' <<<\n");
 	ft_conversion_test("%-Nc", 6);
 	ft_conversion_test("%-Ns", 7);

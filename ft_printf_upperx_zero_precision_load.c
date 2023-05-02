@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 20:08:27 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/30 00:42:06 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/02 02:02:28 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ static void	load(void)
 	n = 0;
 	while (n < 5)
 	{
-		nb = ft_printf("%09.11X" EOL, upperx[n]);
+		nb = ft_printf("%05.15X" EOL, upperx[n]);
 		printf("%d" EOL, nb);
-		nb = printf("%09.11X" EOL, upperx[n]);
+		nb = printf("%05.15X" EOL, upperx[n]);
 		printf("%d" EOL, nb);
 		++n;
 	}
-	nb = ft_printf("%01.X %080.X %0901.0X" EOL, upperx[5], upperx[6], upperx[7]);
+	nb = ft_printf("%040.X %080.X %0901.0X" EOL, upperx[5], upperx[6], upperx[7]);
 	printf("%d" EOL, nb);
-	nb = printf("%01.X %080.X %0901.0X" EOL, upperx[5], upperx[6], upperx[7]);
+	nb = printf("%040.X %080.X %0901.0X" EOL, upperx[5], upperx[6], upperx[7]);
 	printf("%d" EOL, nb);
 }
 

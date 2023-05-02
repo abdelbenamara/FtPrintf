@@ -6,7 +6,7 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 19:26:54 by abenamar          #+#    #+#              #
-#    Updated: 2023/04/30 14:19:15 by abenamar         ###   ########.fr        #
+#    Updated: 2023/05/02 02:48:30 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,12 @@ LSRCS += ft_printf_i_field_width_load.c
 LSRCS += ft_printf_u_field_width_load.c
 LSRCS += ft_printf_x_field_width_load.c
 LSRCS += ft_printf_upperx_field_width_load.c
+LSRCS += ft_printf_x_alternate_form_field_width_load.c
+LSRCS += ft_printf_upperx_alternate_form_field_width_load.c
+LSRCS += ft_printf_d_blank_field_width_load.c
+LSRCS += ft_printf_i_blank_field_width_load.c
+LSRCS += ft_printf_d_sign_field_width_load.c
+LSRCS += ft_printf_i_sign_field_width_load.c
 LSRCS += ft_printf_c_minus_load.c
 LSRCS += ft_printf_s_minus_load.c
 LSRCS += ft_printf_p_minus_load.c

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_upperx_zero_blank_load.c                 :+:      :+:    :+:   */
+/*   ft_printf_upperx_zero_alternate_form_load.c        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 20:08:27 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/30 00:59:07 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/02 03:27:45 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ static void	load(void)
 	n = 0;
 	while (n < 5)
 	{
-		nb = ft_printf("%0 9X" EOL, upperx[n]);
+		nb = ft_printf("%0#9X" EOL, upperx[n]);
 		printf("%d" EOL, nb);
-		nb = printf("%0 9X" EOL, upperx[n]);
+		nb = printf("%0#9X" EOL, upperx[n]);
 		printf("%d" EOL, nb);
 		++n;
 	}
-	nb = ft_printf("%0 1X %0 80X %0 901X" EOL, upperx[5], upperx[6], upperx[7]);
+	nb = ft_printf("%0#40X %0#80X %0#901X" EOL, upperx[5], upperx[6], upperx[7]);
 	printf("%d" EOL, nb);
-	nb = printf("%0 1X %0 80X %0 901X" EOL, upperx[5], upperx[6], upperx[7]);
+	nb = printf("%0#40X %0#80X %0#901X" EOL, upperx[5], upperx[6], upperx[7]);
 	printf("%d" EOL, nb);
 }
 

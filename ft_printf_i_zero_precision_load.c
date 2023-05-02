@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 18:34:41 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/30 00:40:23 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/02 01:49:12 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ static void	load(void)
 	n = 0;
 	while (n < 7)
 	{
-		nb = ft_printf("%06.7i" EOL, i[n]);
+		nb = ft_printf("%05.15i" EOL, i[n]);
 		printf("%d" EOL, nb);
-		nb = printf("%06.7i" EOL, i[n]);
+		nb = printf("%05.15i" EOL, i[n]);
 		printf("%d" EOL, nb);
 		++n;
 	}
-	nb = ft_printf("%01.i %050.i %0567.0i" EOL, i[7], i[8], i[9]);
+	nb = ft_printf("%025.i %050.i %0567.0i" EOL, i[7], i[8], i[9]);
 	printf("%d" EOL, nb);
-	nb = printf("%01.i %050.i %0567.0i" EOL, i[7], i[8], i[9]);
+	nb = printf("%025.i %050.i %0567.0i" EOL, i[7], i[8], i[9]);
 	printf("%d" EOL, nb);
 }
 
