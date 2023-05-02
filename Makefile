@@ -6,7 +6,7 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 01:10:09 by abenamar          #+#    #+#              #
-#    Updated: 2023/05/02 01:08:35 by abenamar         ###   ########.fr        #
+#    Updated: 2023/05/02 22:22:43 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ RM := rm -f
 	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
 
 $(NAME): $(LIBFT) $(OBJS)
+	cp $(LIBFT) $(NAME)
 	$(AR) $(AROPTIONS) $(NAME) $(OBJS)
 
 $(LIBFT):
