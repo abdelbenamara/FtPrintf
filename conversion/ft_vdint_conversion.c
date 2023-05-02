@@ -6,11 +6,11 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:02:05 by abenamar          #+#    #+#             */
-/*   Updated: 2023/05/01 17:05:53 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/02 04:10:17 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf_conversion.h"
+#include "libftprintf.h"
 
 static int	ft_adjust_uchar(int fd, t_cfwps *specs, int d)
 {
@@ -22,18 +22,26 @@ static int	ft_adjust_uchar(int fd, t_cfwps *specs, int d)
 	return (nb);
 }
 
-static int	ft_apply_flags(int fd, t_cfwps *specs, int d)
+static size_t	ft_apply_flags(int fd, t_cfwps *specs, int d, char **a)
 {
+	char	*tmp;
+
 	if (d < 0 && specs->zero_flag)
 		ft_putchar_fd('-', fd);
 	else if (d >= 0)
 	{
 		if (specs->sign_flag)
-			return (ft_putchar_fd('+', fd), 1);
+		{
+			if (specs->zero_flag)
+				return (ft_putchar_fd('+', fd), ft_strlen(*a) + 1);
+			tmp = ft_strjoin("+", *a);
+			if (tmp)
+				(free(*a), *a = tmp);
+		}
 		else if (specs->blank_flag)
-			return (ft_putchar_fd(' ', fd), 1);
+			return (ft_putchar_fd(' ', fd), ft_strlen(*a) + 1);
 	}
-	return (0);
+	return (ft_strlen(*a));
 }
 
 static int	ft_precise(int fd, t_cfwps *specs, int d, size_t len)
@@ -56,7 +64,7 @@ static int	ft_precise(int fd, t_cfwps *specs, int d, size_t len)
 	return (nb);
 }
 
-int	ft_vdint_conversion(int fd, t_cfwps *specs, va_list ap)
+int	ft_vdint_conversion(int fd, t_cfwps *specs, va_list *ap)
 {
 	int		d;
 	char	*a;
@@ -64,18 +72,17 @@ int	ft_vdint_conversion(int fd, t_cfwps *specs, va_list ap)
 	int		nb;
 	size_t	width;
 
-	d = va_arg(ap, int);
+	d = va_arg(*ap, int);
 	if (specs->specifier == 'c')
 		return (nb = ft_adjust_uchar(fd, specs, d), free(specs), nb + 1);
 	a = ft_itoa(d);
 	if (!a)
 		return (free(specs), 0);
-	len = ft_strlen(a);
-	nb = ft_apply_flags(fd, specs, d);
+	len = ft_apply_flags(fd, specs, d, &a);
 	if (!d && !specs->precision)
 		len = 0;
-	width = nb + ft_max_width(len, specs->precision);
-	nb += ft_adjust_width(0, fd, specs, width) + ft_precise(fd, specs, d, len);
+	width = ft_max_width(len, specs->precision);
+	nb = ft_adjust_width(0, fd, specs, width) + ft_precise(fd, specs, d, len);
 	if (d < 0)
 		ft_putstr_fd(a + 1, fd);
 	else if (d > 0 || specs->precision)

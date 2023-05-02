@@ -6,15 +6,15 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 13:56:33 by abenamar          #+#    #+#             */
-/*   Updated: 2023/05/01 17:06:56 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/02 01:28:50 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf_conversion.h"
+#include "libftprintf.h"
 
-int	ft_vdconvert(int fd, const char **format, va_list ap)
+int	ft_vdconvert(int fd, const char **format, va_list *ap)
 {
-	static int	(*ft_vd_conversion[])(int, t_cfwps *, va_list) = {
+	static int	(*ft_vd_conversion[])(int, t_cfwps *, va_list *) = {
 		ft_vdint_conversion, ft_vdstr_conversion, ft_vdptr_conversion,
 		ft_vdint_conversion, ft_vdint_conversion, ft_vduint_conversion,
 		ft_vduint_conversion, ft_vduint_conversion

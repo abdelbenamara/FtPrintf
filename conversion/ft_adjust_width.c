@@ -6,11 +6,11 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 23:10:27 by abenamar          #+#    #+#             */
-/*   Updated: 2023/05/01 11:43:29 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/02 01:08:48 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf_conversion_specifications.h"
+#include "libftprintf.h"
 
 static uint8_t	ft_is_numeric_conversion(char c)
 {

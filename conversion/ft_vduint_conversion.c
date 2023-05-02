@@ -6,22 +6,37 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:02:49 by abenamar          #+#    #+#             */
-/*   Updated: 2023/05/01 17:06:23 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/02 03:33:55 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf_conversion.h"
+#include "libftprintf.h"
 
-static int	ft_apply_flags(int fd, t_cfwps *specs, unsigned int u)
+static size_t	ft_apply_flags(int fd, t_cfwps *specs, unsigned int u, char **a)
 {
+	char	*tmp;
+
 	if (u > 0 && specs->alternate_form_flag)
 	{
-		if (specs->specifier == 'x')
-			return (ft_putstr_fd("0x", fd), 2);
-		else if (specs->specifier == 'X')
-			return (ft_putstr_fd("0X", fd), 2);
+		if (specs->specifier == 'x' || specs->specifier == 'X')
+		{
+			if (specs->specifier == 'x')
+			{
+				if (specs->zero_flag)
+					return (ft_putstr_fd("0x", fd), ft_strlen(*a) + 2);
+				tmp = ft_strjoin("0x", *a);
+			}
+			else
+			{
+				if (specs->zero_flag)
+					return (ft_putstr_fd("0X", fd), ft_strlen(*a) + 2);
+				tmp = ft_strjoin("0X", *a);
+			}
+			if (tmp)
+				(free(*a), *a = tmp);
+		}
 	}
-	return (0);
+	return (ft_strlen(*a));
 }
 
 static int	ft_precise(int fd, t_cfwps *specs, unsigned int u, size_t len)
@@ -40,15 +55,15 @@ static int	ft_precise(int fd, t_cfwps *specs, unsigned int u, size_t len)
 	return (nb);
 }
 
-int	ft_vduint_conversion(int fd, t_cfwps *specs, va_list ap)
+int	ft_vduint_conversion(int fd, t_cfwps *specs, va_list *ap)
 {
 	unsigned int	u;
 	char			*a;
-	size_t			len;
 	int				nb;
+	size_t			len;
 	size_t			width;
 
-	u = va_arg(ap, unsigned int);
+	u = va_arg(*ap, unsigned int);
 	if (specs->specifier == 'x')
 		a = ft_uitoa_base(u, "0123456789abcdef");
 	else if (specs->specifier == 'X')
@@ -57,12 +72,11 @@ int	ft_vduint_conversion(int fd, t_cfwps *specs, va_list ap)
 		a = ft_uitoa_base(u, "0123456789");
 	if (!a)
 		return (free(specs), 0);
-	len = ft_strlen(a);
-	nb = ft_apply_flags(fd, specs, u);
+	len = ft_apply_flags(fd, specs, u, &a);
 	if (!u && !specs->precision)
 		len = 0;
-	width = nb + ft_max_width(len, specs->precision);
-	nb += ft_adjust_width(0, fd, specs, width) + ft_precise(fd, specs, u, len);
+	width = ft_max_width(len, specs->precision);
+	nb = ft_adjust_width(0, fd, specs, width) + ft_precise(fd, specs, u, len);
 	if (u > 0 || specs->precision)
 		ft_putstr_fd(a, fd);
 	nb += ft_adjust_width(1, fd, specs, width);
