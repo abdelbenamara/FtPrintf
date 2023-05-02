@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:02:49 by abenamar          #+#    #+#             */
-/*   Updated: 2023/05/02 11:59:42 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/02 22:07:28 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ int	ft_vduint_conversion(int fd, t_cfwps *specs, va_list *ap)
 	unsigned int	u;
 	char			*a;
 	size_t			len;
-	int				nb;
 	size_t			width;
+	int				nb;
 
 	u = va_arg(*ap, unsigned int);
 	if (specs->specifier == 'x')
