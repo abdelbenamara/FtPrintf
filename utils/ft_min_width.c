@@ -6,11 +6,11 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 23:17:48 by abenamar          #+#    #+#             */
-/*   Updated: 2023/04/30 00:12:53 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/02 01:09:50 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf_utils.h"
+#include "libftprintf.h"
 
 size_t	ft_min_width(size_t len, ssize_t precision)
 {
