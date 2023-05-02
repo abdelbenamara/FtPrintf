@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:02:49 by abenamar          #+#    #+#             */
-/*   Updated: 2023/05/02 03:33:55 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/02 11:59:42 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int	ft_vduint_conversion(int fd, t_cfwps *specs, va_list *ap)
 {
 	unsigned int	u;
 	char			*a;
-	int				nb;
 	size_t			len;
+	int				nb;
 	size_t			width;
 
 	u = va_arg(*ap, unsigned int);
@@ -74,7 +74,7 @@ int	ft_vduint_conversion(int fd, t_cfwps *specs, va_list *ap)
 		return (free(specs), 0);
 	len = ft_apply_flags(fd, specs, u, &a);
 	if (!u && !specs->precision)
-		len = 0;
+		--len;
 	width = ft_max_width(len, specs->precision);
 	nb = ft_adjust_width(0, fd, specs, width) + ft_precise(fd, specs, u, len);
 	if (u > 0 || specs->precision)

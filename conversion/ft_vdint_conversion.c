@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:02:05 by abenamar          #+#    #+#             */
-/*   Updated: 2023/05/02 04:10:17 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/02 12:41:35 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static size_t	ft_apply_flags(int fd, t_cfwps *specs, int d, char **a)
 	{
 		if (specs->sign_flag)
 		{
-			if (specs->zero_flag)
+			if (specs->zero_flag || specs->precision >= 0)
 				return (ft_putchar_fd('+', fd), ft_strlen(*a) + 1);
 			tmp = ft_strjoin("+", *a);
 			if (tmp)
@@ -61,6 +61,8 @@ static int	ft_precise(int fd, t_cfwps *specs, int d, size_t len)
 		min = specs->precision - len;
 	while (nb < min)
 		(ft_putchar_fd('0', fd), ++nb);
+	if (min > 0 && d >= 0 && (specs->sign_flag || specs->blank_flag))
+		(ft_putchar_fd('0', fd), ++nb);
 	return (nb);
 }
 
@@ -80,8 +82,10 @@ int	ft_vdint_conversion(int fd, t_cfwps *specs, va_list *ap)
 		return (free(specs), 0);
 	len = ft_apply_flags(fd, specs, d, &a);
 	if (!d && !specs->precision)
-		len = 0;
+		--len;
 	width = ft_max_width(len, specs->precision);
+	if (d < 0 && specs->field_width > width && width > len)
+		++width;
 	nb = ft_adjust_width(0, fd, specs, width) + ft_precise(fd, specs, d, len);
 	if (d < 0)
 		ft_putstr_fd(a + 1, fd);
