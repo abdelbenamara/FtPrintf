@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:02:05 by abenamar          #+#    #+#             */
-/*   Updated: 2023/05/02 22:07:34 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/03 02:23:51 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,10 @@ int	ft_vdint_conversion(int fd, t_cfwps *specs, va_list *ap)
 	a = ft_itoa(d);
 	if (!a)
 		return (free(specs), 0);
-	len = ft_apply_flags(fd, specs, d, &a);
-	if (!d && !specs->precision)
-		--len;
+	len = ft_apply_flags(fd, specs, d, &a) - (!d && !specs->precision);
 	width = ft_max_width(len, specs->precision);
-	if (d < 0 && specs->field_width > width && width > len)
-		++width;
+	width += (d < 0 && specs->min_width > width
+			&& specs->precision > 0 && ((size_t) specs->precision) >= len);
 	nb = ft_adjust_width(0, fd, specs, width) + ft_precise(fd, specs, d, len);
 	if (d < 0)
 		ft_putstr_fd(a + 1, fd);

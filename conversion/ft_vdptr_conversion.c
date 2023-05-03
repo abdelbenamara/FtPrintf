@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:00:40 by abenamar          #+#    #+#             */
-/*   Updated: 2023/05/02 02:32:38 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/03 02:21:58 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ int	ft_vdptr_conversion(int fd, t_cfwps *specs, va_list *ap)
 		a = ft_uiptrtoa_base(p, "0123456789abcdef");
 	if (!a)
 		return (free(specs), 0);
-	len = 0;
-	if (p)
-		len = 2;
-	len += ft_strlen(a);
+	len = 2 - 2 * (!p) + ft_strlen(a);
 	nb = ft_adjust_width(0, fd, specs, len);
 	if (p)
 		ft_putstr_fd("0x", fd);

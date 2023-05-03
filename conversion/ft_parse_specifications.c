@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 13:53:53 by abenamar          #+#    #+#             */
-/*   Updated: 2023/05/02 01:08:58 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/03 01:47:42 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_cfwps	*ft_init_specs(void)
 	specs->zero_flag = 0;
 	specs->blank_flag = 0;
 	specs->sign_flag = 0;
-	specs->field_width = 0;
+	specs->min_width = 0;
 	specs->precision = -1;
 	return (specs);
 }
@@ -49,7 +49,7 @@ static size_t	ft_set_width(const char *format, size_t i, t_cfwps *specs)
 	size_t	idx;
 
 	idx = i;
-	specs->field_width = ft_atoi(format + idx);
+	specs->min_width = ft_atoi(format + idx);
 	while (ft_isdigit(format[idx]))
 		++idx;
 	return (idx);

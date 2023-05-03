@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:02:49 by abenamar          #+#    #+#             */
-/*   Updated: 2023/05/02 22:07:28 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/03 02:19:54 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,7 @@ int	ft_vduint_conversion(int fd, t_cfwps *specs, va_list *ap)
 		a = ft_uitoa_base(u, "0123456789");
 	if (!a)
 		return (free(specs), 0);
-	len = ft_apply_flags(fd, specs, u, &a);
-	if (!u && !specs->precision)
-		--len;
+	len = ft_apply_flags(fd, specs, u, &a) - (!u && !specs->precision);
 	width = ft_max_width(len, specs->precision);
 	nb = ft_adjust_width(0, fd, specs, width) + ft_precise(fd, specs, u, len);
 	if (u > 0 || specs->precision)
