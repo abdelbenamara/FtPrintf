@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 00:34:14 by abenamar          #+#    #+#             */
-/*   Updated: 2023/05/02 01:28:26 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/03 01:47:31 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_cfwps
 	uint8_t	left_adjustement_flag;
 	uint8_t	blank_flag;
 	uint8_t	sign_flag;
-	size_t	field_width;
+	size_t	min_width;
 	ssize_t	precision;
 	char	specifier;
 	size_t	len;
