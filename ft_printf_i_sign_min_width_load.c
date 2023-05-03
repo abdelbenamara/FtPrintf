@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_s_field_width_precision_load.c           :+:      :+:    :+:   */
+/*   ft_printf_i_sign_field_width_load.c                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 22:05:08 by abenamar          #+#    #+#             */
-/*   Updated: 2023/05/02 01:38:18 by abenamar         ###   ########.fr       */
+/*   Created: 2023/02/04 18:34:41 by abenamar          #+#    #+#             */
+/*   Updated: 2023/05/03 01:38:45 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 static void	load(void)
 {
-	const char	*s[9] = { NULL, "", "\rtest\b", "àéîüœ", "Hello World!", "0123456789", NULL, "", "123" };
+	const int	i[10] = { 0, -0, -1234, 456, -2147483648, 2147483647, 1000000000, 0, -2147483648, 2147483647 };
 	int			n;
 	int			nb;
 
 	n = 0;
-	while (n < 6)
+	while (n < 7)
 	{
-		nb = ft_printf("%3.7s" EOL, s[n]);
+		nb = ft_printf("%+6i" EOL, i[n]);
 		printf("%d" EOL, nb);
-		nb = printf("%3.7s" EOL, s[n]);
+		nb = printf("%+6i" EOL, i[n]);
 		printf("%d" EOL, nb);
 		++n;
 	}
-	nb = ft_printf("%10.s %20.0s %234.001s" EOL, s[6], s[7], s[8]);
+	nb = ft_printf("%+25i %+50i %+567i" EOL, i[7], i[8], i[9]);
 	printf("%d" EOL, nb);
-	nb = printf("%10.s %20.0s %234.001s" EOL, s[6], s[7], s[8]);
+	nb = printf("%+25i %+50i %+567i" EOL, i[7], i[8], i[9]);
 	printf("%d" EOL, nb);
 }
 

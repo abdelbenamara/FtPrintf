@@ -6,21 +6,17 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 19:26:54 by abenamar          #+#    #+#              #
-#    Updated: 2023/05/02 02:48:30 by abenamar         ###   ########.fr        #
+#    Updated: 2023/05/03 02:07:32 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := test.out
 
 INCLUDES := -I $(CURDIR)
-INCLUDES += -I $(CURDIR)/..
-INCLUDES += -I $(CURDIR)/../libft
 
 LDFLAGS := -L$(CURDIR)/..
-LDFLAGS += -L$(CURDIR)/../libft
 
 LDLIBS := -lftprintf
-LDLIBS += -lft
 
 LSRCS := ft_printf_no_conversion_load.c
 LSRCS += ft_printf_c_conversion_load.c
@@ -41,6 +37,8 @@ CFLAGS += -Wextra
 CFLAGS += -Werror
 CFLAGS += -Wno-format
 
+PAULO_RULE := fclean nosan run
+
 TRIPOUILLE_RULE := m
 
 ifneq (, $(findstring bonus, $(MAKECMDGOALS)))
@@ -56,20 +54,20 @@ LSRCS += ft_printf_d_sign_blank_load.c
 LSRCS += ft_printf_i_sign_blank_load.c
 LSRCS += ft_printf_d_blank_sign_load.c
 LSRCS += ft_printf_i_blank_sign_load.c
-LSRCS += ft_printf_c_field_width_load.c
-LSRCS += ft_printf_s_field_width_load.c
-LSRCS += ft_printf_p_field_width_load.c
-LSRCS += ft_printf_d_field_width_load.c
-LSRCS += ft_printf_i_field_width_load.c
-LSRCS += ft_printf_u_field_width_load.c
-LSRCS += ft_printf_x_field_width_load.c
-LSRCS += ft_printf_upperx_field_width_load.c
-LSRCS += ft_printf_x_alternate_form_field_width_load.c
-LSRCS += ft_printf_upperx_alternate_form_field_width_load.c
-LSRCS += ft_printf_d_blank_field_width_load.c
-LSRCS += ft_printf_i_blank_field_width_load.c
-LSRCS += ft_printf_d_sign_field_width_load.c
-LSRCS += ft_printf_i_sign_field_width_load.c
+LSRCS += ft_printf_c_min_width_load.c
+LSRCS += ft_printf_s_min_width_load.c
+LSRCS += ft_printf_p_min_width_load.c
+LSRCS += ft_printf_d_min_width_load.c
+LSRCS += ft_printf_i_min_width_load.c
+LSRCS += ft_printf_u_min_width_load.c
+LSRCS += ft_printf_x_min_width_load.c
+LSRCS += ft_printf_upperx_min_width_load.c
+LSRCS += ft_printf_x_alternate_form_min_width_load.c
+LSRCS += ft_printf_upperx_alternate_form_min_width_load.c
+LSRCS += ft_printf_d_blank_min_width_load.c
+LSRCS += ft_printf_i_blank_min_width_load.c
+LSRCS += ft_printf_d_sign_min_width_load.c
+LSRCS += ft_printf_i_sign_min_width_load.c
 LSRCS += ft_printf_c_minus_load.c
 LSRCS += ft_printf_s_minus_load.c
 LSRCS += ft_printf_p_minus_load.c
@@ -117,12 +115,12 @@ LSRCS += ft_printf_d_blank_precision_load.c
 LSRCS += ft_printf_i_blank_precision_load.c
 LSRCS += ft_printf_d_sign_precision_load.c
 LSRCS += ft_printf_i_sign_precision_load.c
-LSRCS += ft_printf_s_field_width_precision_load.c
-LSRCS += ft_printf_d_field_width_precision_load.c
-LSRCS += ft_printf_i_field_width_precision_load.c
-LSRCS += ft_printf_u_field_width_precision_load.c
-LSRCS += ft_printf_x_field_width_precision_load.c
-LSRCS += ft_printf_upperx_field_width_precision_load.c
+LSRCS += ft_printf_s_min_width_precision_load.c
+LSRCS += ft_printf_d_min_width_precision_load.c
+LSRCS += ft_printf_i_min_width_precision_load.c
+LSRCS += ft_printf_u_min_width_precision_load.c
+LSRCS += ft_printf_x_min_width_precision_load.c
+LSRCS += ft_printf_upperx_min_width_precision_load.c
 LSRCS += ft_printf_s_minus_precision_load.c
 LSRCS += ft_printf_d_minus_precision_load.c
 LSRCS += ft_printf_i_minus_precision_load.c
@@ -134,6 +132,8 @@ LSRCS += ft_printf_i_zero_precision_load.c
 LSRCS += ft_printf_u_zero_precision_load.c
 LSRCS += ft_printf_x_zero_precision_load.c
 LSRCS += ft_printf_upperx_zero_precision_load.c
+
+PAULO_RULE := fclean bonusnosan run
 
 TRIPOUILLE_RULE := a
 endif
@@ -186,14 +186,19 @@ norm:
 	@cd $(CURDIR)/.. && norminette $$(ls | grep "\.c\|\.h") && norminette $$(ls -d */ | grep -v 'libft/' | grep -v 'tests/')
 
 community-tests:
+	@if [ ! -d "ft_printf_tester" ] || [ -z "$$(ls -A ft_printf_tester)" ]; then \
+		git submodule update --init ft_printf_tester; \
+		sed -i 's/\(LIBFTPRINTF_DIR = \.\.\/\)/\1\.\./' ft_printf_tester/Makefile; \
+	fi
 	@if [ ! -d "printfTester" ] || [ -z "$$(ls -A printfTester)" ]; then \
 		git submodule update --init printfTester; \
 		echo "#ifndef FT_PRINTF_H\n# define FT_PRINTF_H\n\nint	ft_printf(const char *format, ...);\n\n#endif" > printfTester/ft_printf.h; \
 		sed -i 's/\(\.\.\)/\1\/\1/g' printfTester/Makefile; \
-		sed -i 's/\(-I utils\/\) -I\.\.\/\.\./\1 -I. -I..\/..\/libft/' printfTester/Makefile; \
-		sed -i 's/\(-lftprintf\)/\1 -L..\/..\/libft -lft/' printfTester/Makefile; \
+		sed -i 's/\(-I utils\/ -I\.\)\.\/\.\./\1/' printfTester/Makefile; \
 		sed -i 's/: update/:/g' printfTester/Makefile; \
 	fi
+	@echo "\033[0;36m############################# paulo-santana : ft_printf_tester #############################\033[0m"
+	@$(MAKE) -C ft_printf_tester/ $(PAULO_RULE)
 	@echo "\033[0;36m################################# Tripouille : printfTester ################################\033[0m"
 	@$(MAKE) -C printfTester/ $(TRIPOUILLE_RULE)
 

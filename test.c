@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 21:04:25 by abenamar          #+#    #+#             */
-/*   Updated: 2023/05/02 02:49:00 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/03 01:46:51 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	main(void)
 	printf("\n");
 	ft_conversion_test("% +d", 8);
 	ft_conversion_test("% +i", 8);
-	printf("\n" RESET "\n--- 'N' represents a strictly positive decimal number ---\n\n>>> field width <<<\n");
+	printf("\n" RESET "\n--- 'N' represents a strictly positive decimal number ---\n\n>>> minimun width <<<\n");
 	ft_conversion_test("%Nc", 6);
 	ft_conversion_test("%Ns", 7);
 	ft_conversion_test("%Np", 6);

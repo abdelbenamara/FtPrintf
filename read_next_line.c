@@ -6,11 +6,10 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 01:35:25 by abenamar          #+#    #+#             */
-/*   Updated: 2023/05/01 17:08:32 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/03 01:53:43 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "libftprintf_test.h"
 
 static void	ft_strncpy(char *dst, const char *src, size_t size)
