@@ -6,7 +6,7 @@
 /*   By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 13:53:53 by abenamar          #+#    #+#             */
-/*   Updated: 2023/05/04 19:16:02 by abenamar         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:33:19 by abenamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,8 @@ t_cfwps	*ft_parse_specifications(const char *format)
 	if (!specs)
 		return (NULL);
 	i = 1;
-	while (format[i] && !ft_is_specifier(format[i]) && !ft_isalpha(format[i]))
-	{
-		if (ft_is_flag(format[i]))
-			i = ft_set_flag(format, i, specs);
-		else if (ft_isdigit(format[i]) || format[i] == '.')
-			break ;
-		else
-			++i;
-	}
+	while (ft_is_flag(format[i]))
+		i = ft_set_flag(format, i, specs);
 	if (ft_isdigit(format[i]))
 		i = ft_set_width(format, i, specs);
 	if (format[i] == '.')
