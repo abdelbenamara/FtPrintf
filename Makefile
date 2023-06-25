@@ -6,7 +6,7 @@
 #    By: abenamar <abenamar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 19:26:54 by abenamar          #+#    #+#              #
-#    Updated: 2023/05/03 02:07:32 by abenamar         ###   ########.fr        #
+#    Updated: 2023/06/25 19:36:28 by abenamar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -173,6 +173,10 @@ $(NAME): .libftprintf .reload $(OBJS) $(LOBJS) $(LOUTS)
 	@$(RM) $(LOUTS)
 	@$(RM) $$(echo "$(NAME)" | sed 's/\(\.o\)ut/\1/')
 
+norm:
+	@echo "\033[0;36m######################################## norminette ########################################\033[0m"
+	@cd $(CURDIR)/.. && norminette $$(ls | grep "\.c\|\.h") && norminette $$(ls -d */ | grep -v 'libft/' | grep -v 'tests/')
+
 test: $(NAME)
 	@echo "\033[0;36m########################################### test ###########################################\033[0m"
 	@($(LOADS)) | ./$(NAME)
@@ -180,10 +184,6 @@ test: $(NAME)
 valgrind-test: $(NAME) 
 	@echo "\033[0;36m#################################### test with valgrind ####################################\033[0m"
 	@($(VLOADS)) | valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
-
-norm:
-	@echo "\033[0;36m######################################## norminette ########################################\033[0m"
-	@cd $(CURDIR)/.. && norminette $$(ls | grep "\.c\|\.h") && norminette $$(ls -d */ | grep -v 'libft/' | grep -v 'tests/')
 
 community-tests:
 	@if [ ! -d "ft_printf_tester" ] || [ -z "$$(ls -A ft_printf_tester)" ]; then \
@@ -216,4 +216,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: re fclean clean all bonus norm valgrind-test test
+.PHONY: re fclean clean all bonus community-tests valgrind-test test norm
